@@ -2,3 +2,52 @@
 	margin: 0;
 	padding: 0;
 }
+
+body {
+	padding: 0 0 0 10px;
+}
+
+.main {
+	background-color: black;
+}
+
+#boxes li {
+	position: relative;
+	width: 90px;
+	height: 48px;
+	border: 1px white solid;
+}
+
+#boxes li p {
+	position: absolute;
+	top: 4px;
+	margin-left: 5px;
+	color: red;
+	font-size: 30px;
+	font-family: 'Avenir';
+}
+
+#value {
+	left: 25px;
+}
+
+#boxes li button {
+	position: absolute;
+	left: 60px;
+	width: 20px;
+	height: 20px;
+	background-color: black;
+	border: 1px white solid;
+	border-radius: 15px;
+	color: white;
+	font-size: 10px;
+}
+
+.inc {
+	top: 3px;
+}
+
+.deb {
+	top: 24px;
+}
+

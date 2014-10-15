@@ -1,36 +1,28 @@
-/*)
-var boxes = [{"object": document.getElementById('box0'), "value": 0},
-			 {"object": document.getElementById('box1'), "value": 0},
-			 {"object": document.getElementById('box2'), "value": 0},
-			 {"object": document.getElementById('box3'), "value": 0},
-			 {"object": document.getElementById('box4'), "value": 0},
-			 {"object": document.getElementById('box5'), "value": 0},
-			 {"object": document.getElementById('box6'), "value": 0},
-			 {"object": document.getElementById('box7'), "value": 0},
-			 {"object": document.getElementById('box8'), "value": 0},
-			 {"object": document.getElementById('box9'), "value": 0}]
+var boxVal = new Array(10);
+for (i=0;i<10;i++){
+	boxVal[i] = 0;
+}
 
+// alert(boxes[0]["object"].innerHTML);
 
+function inc(box_num) {
+	boxVal[box_num]++;
+	updateScreen();
+}
 
-function clear() {
-	for (i=0; i<9; i++) {
-		boxes[i]["value"] = 0;
+function deb(box_num) {
+	// must include if value is already 0
+	boxVal[box_num]--;
+	updateScreen();
+}
+
+function updateScreen() {
+	console.log(boxVal);
+	for (i=0;i<10;i++){
+		$('#boxes li:nth-child(' + i+1 + ') p#value').text(boxVal[i]);
 	}
 }
 
-function test() {
-	var string = '';
-	for (i=0; i<9; i++) {
-		string += ' ' + boxes[i]["value"];
-	}
-	console.log(string);
-}
+$(document).ready(function() {
 
-console.log(boxes[0]);
-console.log(document.getElementById('box0'));
-
-*/
-
-var boxes = [{"object": document.getElementById('demo'), "value": 0}, {"object": document.getElementById('demo2'), "value": 0}];
-
-alert(boxes[0]["object"].innerHTML);
+})
