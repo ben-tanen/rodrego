@@ -5,12 +5,30 @@
 
 body {
 	padding: 0 0 0 10px;
+	font-family: 'Avenir';
+	text-align: center;
+	background-color: black;
+}
+
+#title {
+	color: white;
+}
+
+a {
+	text-decoration: underline;
+	color: white;
+}
+
+.header {
+	height: 80px;
 }
 
 .main {
 	position: relative;
 	width: 900px;
 	margin: auto;
+	border: 1px white solid;
+	padding: 10px 10px 10px 10px;
 }
 
 .display {
@@ -61,18 +79,38 @@ body {
 
 .input {
 	position: absolute;
-	top: 0;
-	right: 0;
-	background-color: blue;
+	top: 10px;
+	right: 10px;
+	border: 1px solid white;
 	width: 400px;
 	height: 500px;
 
 }
 
+.input button {
+	position: absolute;
+	bottom: 5px;
+	width: 100px;
+	height: 30px;
+	font-size: 15px;
+}
+
+#play_btn {
+	left: 38px;
+}
+
+#reset_btn {
+	left: 148px;
+}
+
+#step_btn {
+	left: 258px;
+}
+
 #cmd_input {
 	resize: none;
-	margin: 10px 0 0 10px;
-	width: 377px;
-	height: 477px;
+	margin: 10px 0 0 0;
+	width: 370px;
+	height: 447px;
 }
 

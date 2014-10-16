@@ -54,7 +54,6 @@ for (i=0;i<10;i++){
 
 $(document).ready(function() {
 	$('.inc').click(function() {
-		readCommands();
 		box_num = $(this).parent().index();
 		if (boxVal[box_num] < max_limit) {
 			boxVal[box_num]++;
@@ -68,5 +67,13 @@ $(document).ready(function() {
 			boxVal[box_num]--;
 			updateScreen();
 		}
+	});
+
+	$('#play_btn').click(function() {
+		readCommands();
+	});
+
+	$('#reset_btn').click(function() {
+		$('#cmd_input').val('');
 	});
 })
