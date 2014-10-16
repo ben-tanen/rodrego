@@ -8,6 +8,13 @@ body {
 }
 
 .main {
+	position: relative;
+	width: 900px;
+	margin: auto;
+}
+
+.display {
+	width: 500px;
 	background-color: black;
 }
 
@@ -16,6 +23,7 @@ body {
 	width: 90px;
 	height: 48px;
 	border: 1px white solid;
+	list-style: none;
 }
 
 #boxes li p {
@@ -49,5 +57,22 @@ body {
 
 .deb {
 	top: 24px;
+}
+
+.input {
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-color: blue;
+	width: 400px;
+	height: 500px;
+
+}
+
+#cmd_input {
+	resize: none;
+	margin: 10px 0 0 10px;
+	width: 377px;
+	height: 477px;
 }
 
