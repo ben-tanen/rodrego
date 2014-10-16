@@ -25,15 +25,15 @@ a {
 
 .main {
 	position: relative;
-	width: 900px;
+	width: 750px;
 	margin: auto;
 	border: 1px white solid;
 	padding: 10px 10px 10px 10px;
 }
 
 .display {
-	width: 500px;
-	background-color: black;
+	position: relative;
+	width: 350px;
 }
 
 #boxes li {
@@ -75,6 +75,15 @@ a {
 
 .deb {
 	top: 24px;
+}
+
+.cmd_display {
+	position: absolute;
+	top: 0;
+	right: 11px;
+	width: 235px;
+	height: 500px;
+	border: 1px solid white;
 }
 
 .input {
