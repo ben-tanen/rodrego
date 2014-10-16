@@ -8,6 +8,28 @@ function updateScreen() {
 	}
 }
 
+function cmdLineParse(str) {
+	
+
+	var cmd_array = str.trim().replace(/\s{2,}/g, ' ').split(' ');
+	cmd = {'cmd': cmd_array[1], 'cmd_num': cmd_array[0], 'fail': false}
+
+	if (cmd['cmd'] == 'inc' || cmd['cmd'] == 'deb') {
+		cmd['box'] = cmd_array[2];
+		cmd['nxt_cmd'] = cmd_array[3];
+		if (cmd['cmd'] == 'deb') {
+			cmd['fail_cmd'] = cmd_array[4];
+		}
+	}
+
+	// cmd fail testing
+	// - size
+	// - invalid input
+	
+
+	return cmd;
+}
+
 function readCommands() {
 	// must check for duplicate lines
 	// must check for inaccurate input
@@ -20,15 +42,10 @@ function readCommands() {
 	cmds = [ ];
 	var cmd_lines = $('#cmd_input').val().split('\n');
 	for (i=0;i<cmd_lines.length;i++){
-		var cmd_str = cmd_lines[i].trim();
-		var cmd = {'cmd': '', 'cmd_num': 0, 'nxt_num': 0, 'fail_num': 0};
-
-		cmd['cmd_num'] = cmd_str.substr(0,cmd_str.search(' '));
-
-		console.log(cmd);
+		cmds.push(cmdLineParse(cmd_lines[i]));
 	}
-	return cmds
-
+	console.log(cmds);
+	return cmds;
 }
 
 for (i=0;i<10;i++){
