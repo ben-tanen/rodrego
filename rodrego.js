@@ -70,7 +70,7 @@ function readCommands() {
 		}
 
 		cmd = cmdLineParse(cmd_lines[i]);
-		
+
 		if (cmd['fail'] == false){
 			cmds.push(cmd);
 		} else {
@@ -140,6 +140,20 @@ function checkCmdStream(cmds) {
 	return cmds;
 }
 
+function printCommands(cmds) {
+	var cmd_str = '';
+	for (i=0;i<cmds.length;i++){
+		cmd_str += '<p>' + cmds[i]['cmd_num'] + ' ' + cmds[i]['cmd'];
+		if (cmds[i]['cmd'] == 'inc') {
+			cmd_str += ' ' + cmds[i]['box'] + ' ' + cmds[i]['nxt_cmd'];
+		} else if (cmds[i]['cmd'] == 'deb') {
+			cmd_str += ' ' + cmds[i]['box'] + ' ' + cmds[i]['nxt_cmd'] + ' ' + cmds[i]['fail_cmd'];
+		}
+		cmd_str += '</p>'
+	}
+	$('.cmd_display').html(cmd_str);
+}
+
 $(document).ready(function() {
 	initalize();
 
@@ -161,10 +175,19 @@ $(document).ready(function() {
 
 	$('#play_btn').click(function() {
 		cmds = readCommands();
-		console.log(cmds);
+
+		if (typeof cmds == 'string') {
+			alert(cmds);
+		} else {
+			printCommands(cmds);
+		}
 	});
 
 	$('#reset_btn').click(function() {
 		$('#cmd_input').val('');
 	});
+
+	$('#step_btn').click(function() {
+		cmds = readCommands();
+	})
 })
