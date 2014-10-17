@@ -65,7 +65,12 @@ function readCommands() {
 	cmds = [ ];
 	var cmd_lines = $('#cmd_input').val().split('\n');
 	for (i=0;i<cmd_lines.length;i++){
+		if (cmd_lines[i].trim().length == 0 || cmd_lines[i].indexOf('#') >= 0) {
+			continue;
+		}
+
 		cmd = cmdLineParse(cmd_lines[i]);
+		
 		if (cmd['fail'] == false){
 			cmds.push(cmd);
 		} else {
