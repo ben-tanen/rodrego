@@ -102,8 +102,8 @@ function checkCmdStream(cmds) {
 		// check if nxt_cmd is valid
 		// check for deb and if fail_cmd is valid
 
-		if (cmds[i]['cmd'] == 'end') {
-			// 
+		if (cmd_numbers.indexOf(cmds[i]['cmd_num'],cmd_numbers.indexOf(cmds[i]['cmd_num'])+1) > -1) {
+			cmds = 'Command #' + (i+1) + ' Failed: Duplicate Command Number';
 		} else if (cmds[i]['cmd'] == 'inc') {
 			var next_cmd = cmds[i]['nxt_cmd'];
 			var found = false;
@@ -154,6 +154,48 @@ function printCommands(cmds) {
 	$('.cmd_display').html(cmd_str);
 }
 
+function runCommands(cmds) {
+	var i = 0;
+	var k = 1;
+	while (cmds[i]['cmd'] != 'end') {
+		var next_command;
+
+		if (cmds[i]['cmd'] == 'inc') {
+			console.log('inc here');
+			console.log(cmd['nxt_cmd']);
+			setTimeout(inc(cmds[i]),500);
+			
+			next_command = cmd['nxt_cmd'];
+		} else if (cmds[i]['cmd'] == 'deb') {
+			console.log('deb here');
+			setTimeout(deb(cmds[i]),500);
+			next_command = cmd['nxt_cmd'];
+		}
+		for (j=next_command-1;j>0;j--){
+			if (cmds[j]['cmd_num'] == next_command) {
+				i = j;
+				break;
+			}
+		}
+	}
+	console.log('end');
+}
+
+function inc(cmd) {
+	if (boxVal[cmd['box']] < max_limit) {
+		boxVal[cmd['box']]++;
+		updateScreen();
+	}
+	
+}
+
+function deb(cmd) {
+	if (boxVal[cmd['box']] > 0) {
+		boxVal[cmd['box']]--;
+		updateScreen();
+	}
+}
+
 $(document).ready(function() {
 	initalize();
 
@@ -180,7 +222,10 @@ $(document).ready(function() {
 			alert(cmds);
 		} else {
 			printCommands(cmds);
+			runCommands(cmds);
 		}
+
+
 	});
 
 	$('#reset_btn').click(function() {
