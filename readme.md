@@ -19,6 +19,9 @@ For more information about the original project, [click here](http://sites.tufts
 	- [ ] Improve Command Printing
 	- [ ] Add Box "lights"
 - [ ] Implement runCommands()
+	- [ ] Working Counters
+	- [ ] Working Sound
+	- [ ] Working Command Highlighting
 - [ ] Implement printCommands()
 	- [x] Basic Version
 	- [ ] Advanced Version
