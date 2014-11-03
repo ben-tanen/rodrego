@@ -30,7 +30,7 @@ For more information about the original project, [click here](http://sites.tufts
 	- [x] Check Individual Command (cmdFail)
 	- [x] Check Command Stream (progression from 1 to 2 to 3...)
 - [ ] Additional Features
-	- [ ] Variable Speed
+	- [x] Variable Speed
 	- [ ] Load Standard Scripts
 	- [ ] Script Input
 		- [ ] File Parsing

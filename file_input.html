@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Script Input</title>
+	<style>
+		.wrap {
+			position: relative;
+			margin: auto;
+			width: 300px;
+			height: 60px;
+		}
+
+		p {
+			text-align: center;
+		}
+
+		input[type='file'] {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+		}
+
+		input[type='submit'] {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class='wrap'>
+		<p>Choose a script file to run (in <code>.txt</code> format)</p>
+		<input type='file' />
+		<input onclick='customScript(3)' type='submit' />
+	</div>
+</body>
+</html>

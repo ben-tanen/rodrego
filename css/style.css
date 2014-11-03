@@ -10,6 +10,17 @@ body {
 	color: white;
 }
 
+.wrap {
+	position: absolute;
+	background-color: gray;
+	left: 0;
+	width: 110%;
+	height: 600px;
+	z-index: 5;
+	opacity: .8;
+	display: none;
+}
+
 #title {
 	color: white;
 }
@@ -30,6 +41,63 @@ a {
 	margin: auto;
 	border: 1px white solid;
 	padding: 10px 10px 10px 10px;
+}
+
+#options_button {
+	width: 20px;
+	position: absolute;
+	top: 0;
+	right: -25px;
+}
+
+.options {
+	position: absolute;
+	top: 23px;
+	right: -165px;
+	background-color: gray;
+	border-radius: 5px;
+	width: 150px;
+	padding: 5px;
+}
+
+.options ul {
+	list-style: none;
+}
+
+.options li:hover, .options p:nth-child(1):hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.custom_script {
+	position: absolute;
+	width: 300px;
+	height: 60px;
+	background-color: gray;
+	padding: 10px;
+	border-radius: 5px;
+	z-index: 10;
+	top: 50%;
+	left: 50%;
+	margin-top: -30px;
+    margin-left: -150px;
+    display: none;
+}
+
+.custom_script p {
+	text-align: center;
+}
+
+.custom_script input[type='file'] {
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+}
+
+.custom_script input[type='submit'] {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
 }
 
 .display {

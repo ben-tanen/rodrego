@@ -1,8 +1,10 @@
 var boxVal = new Array(10);
 var cmds = [ ];
 var max_limit = 15;
+var cmdSpeed = 500;
 
 function initalize() {
+	$('.options').toggle();
 	for (i=0;i<10;i++){
 		boxVal[i] = i;	
 	}
@@ -31,8 +33,35 @@ function updateDots(box_num) {
 	}
 }
 
+function changeSpeed() {
+	var result = prompt("Enter a new speed (in ms between 100 and 100,000)",  cmdSpeed);
+    
+    if (result != null && !isNaN(result) && result >= 100 && result <= 100000) {
+        cmdSpeed = parseInt(result);
+    }
+}
+
+function customScript(script_num) {
+	if (script_num == 1) {
+		cmd_string = '### This is a Simple Script ###\n\n# MiXED CaSE\n1  iNc    2 2\n2 end\n\n#The next line is\n#commented out\n#3 inc 2 2';
+	} else if (script_num == 2) {
+		cmd_string = '1 deb 4 1 2\n2 deb 2 3 4\n3 inc 4 2\n4 deb 3 5 6\n5 inc 4 4\n6 end\n';
+	} else if (script_num == 3) {
+		cmd_string = '1 deb 4 1 2\n2 deb 2 3 7\n3 deb 3 2 4\n4 inc 2 5\n5 deb 2 6 9\n6 inc 4 5\n7 deb 3 8 9\n8 inc 4 7\n9 end';
+	} else {
+		cmd_string = 'custom script';
+	}
+	$('#cmd_input').text(cmd_string);
+}
+
+function popitup(url) {
+	newwindow=window.open(url,'name','height=55,width=320');
+	if (window.focus) {newwindow.focus()}
+	return false;
+}
+
 function cmdLineParse(str) {
-	var cmd_array = str.trim().replace(/\s{2,}/g, ' ').split(' ');
+	var cmd_array = str.trim().toLowerCase().replace(/\s{2,}/g, ' ').split(' ');
 	cmd = {'cmd': cmd_array[1], 'cmd_num': parseInt(cmd_array[0]), 'fail': false}
 
 	if ((cmd['cmd'] == 'inc' && cmd_array.length != 4) || 
@@ -206,7 +235,7 @@ function runCommands(cmds,i) {
 
 		setTimeout(function() {
 			runCommands(cmds,i);
-		}, 500);
+		}, cmdSpeed);
 
         updateScreen();
 	} else {
@@ -233,6 +262,15 @@ function deb(cmd) {
 
 $(document).ready(function() {
 	initalize();
+
+	$('.wrap').click(function() {
+		$('.custom_script').css('display', 'none');
+		$('.wrap').css('display', 'none');
+	})
+
+	$('#options_button').click(function () {
+		$('.options').slideToggle('fast');
+	})
 
 	$('.inc').click(function() {
 		box_num = $(this).parent().index();

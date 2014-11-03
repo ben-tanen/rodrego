@@ -3,12 +3,22 @@
 <head>
 	<meta charset="UTF-8">
 	<title>RodRego</title>
-	<link rel="stylesheet" href="style.css">
-	<link rel="icon" type="image/png" href="rodrego_icon.jpg">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" type="image/png" href="img/rodrego_icon.jpg">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="rodrego.js"></script>
 </head>
+
 <body>
+	<div class='custom_script'>
+		<p>Choose a script file to run (in <code>.txt</code> format)</p>
+		<input type='file' />
+		<input onclick='customScript(100)' type='submit' value='Submit'/>
+	</div>
+
+	<div class='wrap'>
+	</div>
+
 	<div class='header'>
 		<h1 id='title'>RodRego</h1>
 		<p><a href='http://sites.tufts.edu/rodrego/'>About the Project</a></p>
@@ -23,14 +33,28 @@
 	</audio>
 
 	<audio id='beep'>
-  		<source src="sound/beep.mp3">
-	</audio>
-
-	<audio id='bleep'>
   		<source src="sound/bleep.mp3">
 	</audio>
 
+	<audio id='bleep'>
+  		<source src="sound/beep.mp3">
+	</audio>
+
+
+
 	<div class='main'>
+		<img id='options_button' src='img/gears2.png' />
+		<div class='options'>
+			<p onclick='changeSpeed()'>Change Speed</p>
+			<p>Run Script</p>
+			<ul style='list-style: disc; position: relative; left: 20px;'>
+				<li onclick="customScript(1)">Simple</li>
+				<li onclick="customScript(2)">Addition</li>
+				<li onclick="customScript(3)">Subtraction</li>
+				<li onclick="$('.custom_script').css('display', 'initial'); $('.wrap').css('display', 'initial');">Custom</li>
+			</ul>
+		</div>
+
 		<div class='display'>
 			<ul id='boxes'>
 				<li id="box0">
