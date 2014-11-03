@@ -13,19 +13,25 @@ For more information about the original project, [click here](http://sites.tufts
 
 #### To Do
 
-- [ ] Improve UI/UX
-	- [ ] Overall Aesthetics 
-	- [ ] Update Buttons
-	- [ ] Improve Command Printing
-	- [ ] Add Box "lights"
-- [ ] Implement runCommands()
-	- [ ] Working Counters
-	- [ ] Working Sound
-	- [ ] Working Command Highlighting
-- [ ] Implement printCommands()
+- [x] Improve UI/UX
+	- [x] Overall Aesthetics 
+	- [x] Update Buttons
+	- [x] Improve Command Printing
+	- [x] Add Box "lights"
+- [x] Implement runCommands()
+	- [x] Working Counters
+	- [x] Working Sound
+	- [x] Working Command Highlighting
+- [x] Implement printCommands()
 	- [x] Basic Version
-	- [ ] Advanced Version
+	- [x] Advanced Version
 - [x] Implement readCommands()
 	- [x] Command Parsing
 	- [x] Check Individual Command (cmdFail)
 	- [x] Check Command Stream (progression from 1 to 2 to 3...)
+- [ ] Additional Features
+	- [ ] Variable Speed
+	- [ ] Load Standard Scripts
+	- [ ] Script Input
+		- [ ] File Parsing
+	- [ ] Saving Scripts (?)
