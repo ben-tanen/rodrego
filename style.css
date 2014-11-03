@@ -26,7 +26,7 @@ a {
 
 .main {
 	position: relative;
-	width: 750px;
+	width: 605px;
 	margin: auto;
 	border: 1px white solid;
 	padding: 10px 10px 10px 10px;
@@ -34,23 +34,28 @@ a {
 
 .display {
 	position: relative;
-	width: 350px;
+	width: 305px;
 }
 
 #boxes li {
 	position: relative;
-	width: 90px;
+	width: 100px;
 	height: 48px;
 	border: 1px white solid;
+	border-bottom: none;
 	list-style: none;
+}
+
+#boxes li:nth-child(10) {
+	border-bottom: 1px solid white;
 }
 
 #boxes li p {
 	position: absolute;
-	top: 4px;
+	top: 11px;
 	margin-left: 5px;
 	color: red;
-	font-size: 30px;
+	font-size: 20px;
 	font-family: 'Avenir';
 }
 
@@ -60,31 +65,65 @@ a {
 
 #boxes li button {
 	position: absolute;
-	left: 60px;
+	left: 75px;
 	width: 20px;
 	height: 20px;
 	background-color: black;
 	border: 1px white solid;
-	border-radius: 15px;
 	color: white;
-	font-size: 10px;
+	font-size: 15px;
+}
+
+#boxes li button p {
+	position: relative;
+	color: blue;
 }
 
 .inc {
 	top: 3px;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
 }
 
 .deb {
 	top: 24px;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
 }
 
 .cmd_display {
 	position: absolute;
 	top: 0;
 	right: 11px;
-	width: 235px;
-	height: 500px;
+	width: 180px;
+	height: 100%;
 	border: 1px solid white;
+}
+
+.cmd_output_line {
+	position: relative;
+	top: 8px;
+	left: 10px;
+}
+
+.cmd_output_line_b {
+	position: absolute;
+	left: 25px;
+}
+
+.cmd_output_line_c {
+	position: absolute;
+	left: 75px;
+}
+
+.cmd_output_line_d {
+	position: absolute;
+	left: 110px;
+}
+
+.cmd_output_line_e {
+	position: absolute;
+	left: 145px;
 }
 
 .input {
@@ -92,8 +131,8 @@ a {
 	top: 10px;
 	right: 10px;
 	border: 1px solid white;
-	width: 400px;
-	height: 500px;
+	width: 300px;
+	height: 490px;
 
 }
 
@@ -103,10 +142,16 @@ a {
 	width: 100px;
 	height: 30px;
 	font-size: 15px;
+	border-radius: 5px;
+	background-color: black;
+	color: white;
+	border: 2px solid #474747;
+	border-top: 2px solid white;
+	border-left: 2px solid white;
 }
 
 #play_btn {
-	left: 38px;
+	left: 45px;
 }
 
 #reset_btn {
@@ -115,12 +160,14 @@ a {
 
 #step_btn {
 	left: 258px;
+	display: none;
 }
 
 #cmd_input {
 	resize: none;
 	margin: 10px 0 0 13px;
-	width: 370px;
-	height: 447px;
+	width: 270px;
+	height: 435px;
+	font-size: 15px;
 }
 

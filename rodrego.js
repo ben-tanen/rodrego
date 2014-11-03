@@ -143,42 +143,62 @@ function checkCmdStream(cmds) {
 function printCommands(cmds) {
 	var cmd_str = '';
 	for (i=0;i<cmds.length;i++){
-		cmd_str += '<p>' + cmds[i]['cmd_num'] + ' ' + cmds[i]['cmd'];
+		cmd_str += '<p class="cmd_output_line">' + cmds[i]['cmd_num'] + '<span class="cmd_output_line_b">' + cmds[i]['cmd'].toUpperCase() + '</span>';
 		if (cmds[i]['cmd'] == 'inc') {
-			cmd_str += ' ' + cmds[i]['box'] + ' ' + cmds[i]['nxt_cmd'];
+			cmd_str += ' <span class="cmd_output_line_c">' + cmds[i]['box'] + '</span> <span class="cmd_output_line_d">' + cmds[i]['nxt_cmd'] + '</span>';
 		} else if (cmds[i]['cmd'] == 'deb') {
-			cmd_str += ' ' + cmds[i]['box'] + ' ' + cmds[i]['nxt_cmd'] + ' ' + cmds[i]['fail_cmd'];
+			cmd_str += ' <span class="cmd_output_line_c">' + cmds[i]['box'] + '</span> <span class="cmd_output_line_d">' + cmds[i]['nxt_cmd'] + '</span> <span class="cmd_output_line_e">' + cmds[i]['fail_cmd'] + '</span>';
 		}
 		cmd_str += '</p>'
 	}
 	$('.cmd_display').html(cmd_str);
 }
 
-function runCommands(cmds) {
-	var i = 0;
-	var k = 1;
-	while (cmds[i]['cmd'] != 'end') {
-		var next_command;
+function runCommands(cmds,i) {
+	document.getElementById('beep').pause();
+	document.getElementById('beep').currentTime = 0;
+	document.getElementById('bleep').pause();
+	document.getElementById('bleep').currentTime = 0;
+
+	if (cmds[i]['cmd'] != 'end') {
+		$('.cmd_output_line').css('color', 'white');
+		$('.cmd_output_line:nth-child('+(i+1)+')').css('color', 'yellow');
+		next_command = 0;
 
 		if (cmds[i]['cmd'] == 'inc') {
-			console.log('inc here');
-			console.log(cmd['nxt_cmd']);
-			setTimeout(inc(cmds[i]),500);
-			
-			next_command = cmd['nxt_cmd'];
+			boxVal[cmds[i]['box']]++;
+			next_command = cmds[i]['nxt_cmd'];
+			document.getElementById('beep').play();
 		} else if (cmds[i]['cmd'] == 'deb') {
-			console.log('deb here');
-			setTimeout(deb(cmds[i]),500);
-			next_command = cmd['nxt_cmd'];
+			if (boxVal[cmds[i]['box']] > 0) {
+				boxVal[cmds[i]['box']]--;
+				next_command = cmds[i]['nxt_cmd'];
+				document.getElementById('bleep').play();
+			} else {
+				document.getElementById('fail').play();
+				next_command = cmds[i]['fail_cmd'];
+			}
 		}
-		for (j=next_command-1;j>0;j--){
+
+		for (j=0;j<cmds.length;j++){
 			if (cmds[j]['cmd_num'] == next_command) {
 				i = j;
 				break;
 			}
 		}
+
+
+		setTimeout(function() {
+			runCommands(cmds,i);
+		}, 500);
+
+        updateScreen();
+	} else {
+		document.getElementById('success').play();
+		$('.cmd_output_line').css('color', 'white');
+		$('.cmd_output_line:nth-child('+(i+1)+')').css('color', 'yellow');
 	}
-	console.log('end');
+	
 }
 
 function inc(cmd) {
@@ -186,7 +206,6 @@ function inc(cmd) {
 		boxVal[cmd['box']]++;
 		updateScreen();
 	}
-	
 }
 
 function deb(cmd) {
@@ -222,10 +241,10 @@ $(document).ready(function() {
 			alert(cmds);
 		} else {
 			printCommands(cmds);
-			runCommands(cmds);
+			setTimeout(function (){
+        		runCommands(cmds,0);
+        	}, 500);
 		}
-
-
 	});
 
 	$('#reset_btn').click(function() {
