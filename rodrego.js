@@ -49,7 +49,8 @@ function customScript(script_num) {
 	} else if (script_num == 3) {
 		cmd_string = '1 deb 4 1 2\n2 deb 2 3 7\n3 deb 3 2 4\n4 inc 2 5\n5 deb 2 6 9\n6 inc 4 5\n7 deb 3 8 9\n8 inc 4 7\n9 end';
 	} else {
-		cmd_string = 'custom script';
+		
+		cmd_string = '# custom script here';
 	}
 	$('#cmd_input').text(cmd_string);
 }
