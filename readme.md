@@ -32,7 +32,8 @@ For more information about the original project, [click here](http://sites.tufts
 - [ ] Additional Features
 	- [ ] In-line Commenting (ex: `1 inc 2 2 # comment`)
 	- [x] Variable Speed
-	- [x] Load Standard Scripts
+	- [] Load Standard Scripts
+		- [x] Pre-set input (Addition, Subtraction, etc.)
 		- [ ] Repeated Script Input
 	- [ ] Script Input
 		- [ ] File Parsing
