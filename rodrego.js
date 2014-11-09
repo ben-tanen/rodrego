@@ -2,6 +2,7 @@ var boxVal = new Array(10);
 var cmds = [ ];
 var max_limit = 15;
 var cmdSpeed = 500;
+var stepCmd = -1;
 
 function initalize() {
 	$('.options').toggle();
@@ -55,12 +56,6 @@ function customScript(script_num) {
 	$('#cmd_input').val(cmd_string);
 }
 
-function popitup(url) {
-	newwindow=window.open(url,'name','height=55,width=320');
-	if (window.focus) {newwindow.focus()}
-	return false;
-}
-
 function cmdLineParse(str) {
 	var cmd_array = str.replace(/#.*/g, ' ').trim().toLowerCase().replace(/\s{2,}/g, ' ').split(' ');
 	cmd = {'cmd': cmd_array[1], 'cmd_num': parseInt(cmd_array[0]), 'fail': false}
@@ -79,7 +74,7 @@ function cmdLineParse(str) {
 			cmd['fail_cmd'] = parseInt(cmd_array[4]);
 		}
 	}
-	
+
 	if (cmdFail(cmd)) {
 		cmd['fail'] = true;
 	}
@@ -145,9 +140,6 @@ function checkCmdStream(cmds) {
 	}
 
 	for (i=0;i<cmds.length;i++) {
-		// check for end
-		// check if nxt_cmd is valid
-		// check for deb and if fail_cmd is valid
 
 		if (cmd_numbers.indexOf(cmds[i]['cmd_num'],cmd_numbers.indexOf(cmds[i]['cmd_num'])+1) > -1) {
 			cmds = 'Command #' + (i+1) + ' Failed: Duplicate Command Number';
@@ -201,7 +193,7 @@ function printCommands(cmds) {
 	$('.cmd_display').html(cmd_str);
 }
 
-function runCommands(cmds,i) {
+function runCommands(cmds,i,step) {
 	document.getElementById('beep').pause();
 	document.getElementById('beep').currentTime = 0;
 	document.getElementById('bleep').pause();
@@ -234,16 +226,21 @@ function runCommands(cmds,i) {
 			}
 		}
 
-
-		setTimeout(function() {
-			runCommands(cmds,i);
-		}, cmdSpeed);
+		if (!step) {
+			setTimeout(function() {
+				runCommands(cmds,i,false);
+			}, cmdSpeed);
+		} else {
+			stepCmd = i;
+		}
+		
 
         updateScreen();
 	} else {
 		document.getElementById('success').play();
 		$('.cmd_output_line').css('color', 'white');
 		$('.cmd_output_line:nth-child('+(i+1)+')').css('color', 'yellow');
+		stepCmd = -1;
 	}
 	
 }
@@ -298,16 +295,31 @@ $(document).ready(function() {
 		} else {
 			printCommands(cmds);
 			setTimeout(function (){
-        		runCommands(cmds,0);
-        	}, 500);
+        		runCommands(cmds,0,false);
+        	}, 300);
 		}
 	});
 
 	$('#reset_btn').click(function() {
 		$('#cmd_input').val('');
+		$('.cmd_display').html('');
+
 	});
 
 	$('#step_btn').click(function() {
 		cmds = readCommands();
+
+		if (stepCmd == -1) {
+			if (typeof cmds == 'string') {
+				alert(cmds);
+			} else {
+				printCommands(cmds);
+				setTimeout(function (){
+	        		runCommands(cmds,0,true);
+	        	}, 200);
+			}
+		} else {
+			runCommands(cmds,stepCmd,true);
+		}
 	})
 })

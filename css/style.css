@@ -15,7 +15,7 @@ body {
 	background-color: gray;
 	left: 0;
 	width: 110%;
-	height: 600px;
+	height: 100%;
 	z-index: 5;
 	opacity: .8;
 	display: none;
@@ -37,7 +37,7 @@ a {
 
 .main {
 	position: relative;
-	width: 625px;
+	width: 658px;
 	margin: auto;
 	border: 1px white solid;
 	padding: 10px 10px 10px 10px;
@@ -208,7 +208,7 @@ table {
 	top: 10px;
 	right: 10px;
 	border: 1px solid white;
-	width: 300px;
+	width: 333px;
 	height: 490px;
 
 }
@@ -228,22 +228,21 @@ table {
 }
 
 #play_btn {
-	left: 45px;
+	left: 12px;
 }
 
 #reset_btn {
-	left: 148px;
+	left: 118px;
 }
 
 #step_btn {
-	left: 258px;
-	display: none;
+	left: 223px;
 }
 
 #cmd_input {
 	resize: none;
 	margin: 10px 0 0 13px;
-	width: 270px;
+	width: 307px;
 	height: 435px;
 	font-size: 15px;
 }

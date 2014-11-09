@@ -37,4 +37,5 @@ For more information about the original project, [click here](http://sites.tufts
 		- [x] Repeated Script Input
 	- [ ] Script Input
 		- [ ] File Parsing
+	- [x] Step Button
 	- [ ] Saving Scripts (?)
