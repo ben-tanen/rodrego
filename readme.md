@@ -30,11 +30,11 @@ For more information about the original project, [click here](http://sites.tufts
 	- [x] Check Individual Command (cmdFail)
 	- [x] Check Command Stream (progression from 1 to 2 to 3...)
 - [ ] Additional Features
-	- [ ] In-line Commenting (ex: `1 inc 2 2 # comment`)
+	- [x] In-line Commenting (ex: `1 inc 2 2 # comment`)
 	- [x] Variable Speed
-	- [ ] Load Standard Scripts
+	- [x] Load Standard Scripts
 		- [x] Pre-set input (Addition, Subtraction, etc.)
-		- [ ] Repeated Script Input
+		- [x] Repeated Script Input
 	- [ ] Script Input
 		- [ ] File Parsing
 	- [ ] Saving Scripts (?)

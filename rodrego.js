@@ -52,7 +52,7 @@ function customScript(script_num) {
 		
 		cmd_string = '# custom script here';
 	}
-	$('#cmd_input').text(cmd_string);
+	$('#cmd_input').val(cmd_string);
 }
 
 function popitup(url) {
@@ -62,7 +62,7 @@ function popitup(url) {
 }
 
 function cmdLineParse(str) {
-	var cmd_array = str.trim().toLowerCase().replace(/\s{2,}/g, ' ').split(' ');
+	var cmd_array = str.replace(/#.*/g, ' ').trim().toLowerCase().replace(/\s{2,}/g, ' ').split(' ');
 	cmd = {'cmd': cmd_array[1], 'cmd_num': parseInt(cmd_array[0]), 'fail': false}
 
 	if ((cmd['cmd'] == 'inc' && cmd_array.length != 4) || 
@@ -79,7 +79,7 @@ function cmdLineParse(str) {
 			cmd['fail_cmd'] = parseInt(cmd_array[4]);
 		}
 	}
-
+	
 	if (cmdFail(cmd)) {
 		cmd['fail'] = true;
 	}
@@ -111,7 +111,8 @@ function readCommands() {
 	cmds = [ ];
 	var cmd_lines = $('#cmd_input').val().split('\n');
 	for (i=0;i<cmd_lines.length;i++){
-		if (cmd_lines[i].trim().length == 0 || cmd_lines[i].indexOf('#') >= 0) {
+
+		if (cmd_lines[i].trim().length == 0 || cmd_lines[i].indexOf('#') == 0) {
 			continue;
 		}
 
