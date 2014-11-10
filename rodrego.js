@@ -259,9 +259,11 @@ function runCommands(cmds,i,step) {
 		if (!soundOff) {
 			document.getElementById('success').play();
 		}
+		$("#play_btn").prop("disabled",false);
 		$('.cmd_output_line').css('color', 'white');
 		$('.cmd_output_line:nth-child('+(i+1)+')').css('color', 'yellow');
 		stepCmd = -1;
+
 	}
 	
 }
@@ -301,6 +303,7 @@ $(document).ready(function() {
 			$('.cmd_display').html(error_str);
 			document.getElementById('fail').play();
 		} else {
+			$("#play_btn").prop("disabled",true);
 			printCommands(cmds);
 			setTimeout(function (){
         		runCommands(cmds,0,false);
