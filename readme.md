@@ -22,6 +22,9 @@ For more information about the original project, [click here](http://sites.tufts
 	- [x] Working Counters
 	- [x] Working Sound
 	- [x] Working Command Highlighting
+	- [x] Infinite Loop Handling
+	- [x] Step Button
+	- [ ] Pause Button
 - [x] Implement printCommands()
 	- [x] Basic Version
 	- [x] Advanced Version
@@ -29,15 +32,13 @@ For more information about the original project, [click here](http://sites.tufts
 	- [x] Command Parsing
 	- [x] Check Individual Command (cmdFail)
 	- [x] Check Command Stream (progression from 1 to 2 to 3...)
-- [ ] Additional Features
 	- [x] In-line Commenting (ex: `1 inc 2 2 # comment`)
+- [ ] Additional Features
 	- [x] Variable Speed
-	- [x] Infinite Loop Handling
 	- [x] Load Standard Scripts
 		- [x] Pre-set input (Addition, Subtraction, etc.)
 		- [x] Repeated Script Input
 	- [ ] Script Input
 		- [ ] File Parsing
-	- [x] Step Button
 	- [ ] Saving Scripts (?)
-	- [ ] Sound Off Button
+	- [x] Sound Off Button
