@@ -4,6 +4,7 @@ var max_limit = 15;
 var cmdSpeed = 500;
 var stepCmd = -1;
 var soundOff = false;
+var reset = false;
 
 function initalize() {
 	$('.options').toggle();
@@ -245,12 +246,15 @@ function runCommands(cmds,i,step) {
 			}
 		}
 
-		if (!step) {
+		if (!step && !reset) {
 			setTimeout(function() {
 				runCommands(cmds,i,false);
 			}, cmdSpeed);
-		} else {
+		} else if (step) {
 			stepCmd = i;
+		} else if (reset) {
+			reset = false;
+			$("#play_btn").prop("disabled",false);
 		}
 		
 
@@ -263,7 +267,6 @@ function runCommands(cmds,i,step) {
 		$('.cmd_output_line').css('color', 'white');
 		$('.cmd_output_line:nth-child('+(i+1)+')').css('color', 'yellow');
 		stepCmd = -1;
-
 	}
 	
 }
@@ -312,6 +315,7 @@ $(document).ready(function() {
 	});
 
 	$('#reset_btn').click(function() {
+		reset = true;
 		$('#cmd_input').val('');
 		$('.cmd_display').html('');
 
