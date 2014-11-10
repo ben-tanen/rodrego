@@ -3,6 +3,7 @@ var cmds = [ ];
 var max_limit = 15;
 var cmdSpeed = 500;
 var stepCmd = -1;
+var soundOff = false;
 
 function initalize() {
 	$('.options').toggle();
@@ -40,6 +41,17 @@ function changeSpeed() {
     if (result != null && !isNaN(result) && result >= 100 && result <= 100000) {
         cmdSpeed = parseInt(result);
     }
+}
+
+function changeSound() {
+	if (soundOff) {
+		soundOff = false;
+		$('.options p:nth-child(2)').text('Sound Off');
+	} else {
+		soundOff = true;
+		$('.options p:nth-child(2)').text('Sound On');
+	}
+
 }
 
 function customScript(script_num) {
@@ -207,14 +219,21 @@ function runCommands(cmds,i,step) {
 		if (cmds[i]['cmd'] == 'inc') {
 			boxVal[cmds[i]['box']]++;
 			next_command = cmds[i]['nxt_cmd'];
-			document.getElementById('beep').play();
+			if (!soundOff) {
+				document.getElementById('beep').play();
+			}
+			
 		} else if (cmds[i]['cmd'] == 'deb') {
 			if (boxVal[cmds[i]['box']] > 0) {
 				boxVal[cmds[i]['box']]--;
 				next_command = cmds[i]['nxt_cmd'];
-				document.getElementById('bleep').play();
+				if (!soundOff) {
+					document.getElementById('bleep').play();
+				}
 			} else {
-				document.getElementById('fail').play();
+				if (!soundOff) {
+					document.getElementById('fail').play();
+				}
 				next_command = cmds[i]['fail_cmd'];
 			}
 		}
@@ -237,7 +256,9 @@ function runCommands(cmds,i,step) {
 
         updateScreen();
 	} else {
-		document.getElementById('success').play();
+		if (!soundOff) {
+			document.getElementById('success').play();
+		}
 		$('.cmd_output_line').css('color', 'white');
 		$('.cmd_output_line:nth-child('+(i+1)+')').css('color', 'yellow');
 		stepCmd = -1;

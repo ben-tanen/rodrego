@@ -64,7 +64,7 @@ a {
 	list-style: none;
 }
 
-.options li:hover, .options p:nth-child(1):hover {
+.options li:hover, .options p:nth-child(1):hover, .options p:nth-child(2):hover {
 	text-decoration: underline;
 	cursor: pointer;
 }
