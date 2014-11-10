@@ -39,3 +39,4 @@ For more information about the original project, [click here](http://sites.tufts
 		- [ ] File Parsing
 	- [x] Step Button
 	- [ ] Saving Scripts (?)
+	- [ ] Sound Off Button

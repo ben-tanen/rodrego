@@ -245,31 +245,17 @@ function runCommands(cmds,i,step) {
 	
 }
 
-function inc(cmd) {
-	if (boxVal[cmd['box']] < max_limit) {
-		boxVal[cmd['box']]++;
-		updateScreen();
-	}
-}
-
-function deb(cmd) {
-	if (boxVal[cmd['box']] > 0) {
-		boxVal[cmd['box']]--;
-		updateScreen();
-	}
-}
-
 $(document).ready(function() {
 	initalize();
 
 	$('.wrap').click(function() {
 		$('.custom_script').css('display', 'none');
 		$('.wrap').css('display', 'none');
-	})
+	});
 
 	$('#options_button').click(function () {
 		$('.options').slideToggle('fast');
-	})
+	});
 
 	$('.inc').click(function() {
 		box_num = $(this).parent().index();
@@ -289,9 +275,10 @@ $(document).ready(function() {
 
 	$('#play_btn').click(function() {
 		cmds = readCommands();
-
 		if (typeof cmds == 'string') {
-			alert(cmds);
+			var error_str = '<p id="fail_msg">' + cmds + '</p>'
+			$('.cmd_display').html(error_str);
+			document.getElementById('fail').play();
 		} else {
 			printCommands(cmds);
 			setTimeout(function (){
@@ -311,7 +298,9 @@ $(document).ready(function() {
 
 		if (stepCmd == -1) {
 			if (typeof cmds == 'string') {
-				alert(cmds);
+				var error_str = '<p id="fail_msg">' + cmds + '</p>'
+				$('.cmd_display').html(error_str);
+				document.getElementById('fail').play();
 			} else {
 				printCommands(cmds);
 				setTimeout(function (){

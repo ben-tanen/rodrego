@@ -203,6 +203,12 @@ table {
 	left: 145px;
 }
 
+#fail_msg {
+	text-align: center;
+	color: red;
+	margin-top: 10px;
+}
+
 .input {
 	position: absolute;
 	top: 10px;
@@ -210,7 +216,6 @@ table {
 	border: 1px solid white;
 	width: 333px;
 	height: 490px;
-
 }
 
 .input button {
@@ -242,8 +247,9 @@ table {
 #cmd_input {
 	resize: none;
 	margin: 10px 0 0 13px;
-	width: 307px;
-	height: 435px;
+	width: 297px;
+	height: 425px;
 	font-size: 15px;
+	padding: 5px;
 }
 
