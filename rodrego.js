@@ -22,15 +22,12 @@ function updateScreen() {
 
 function updateDots(box_num) {
 	for (var i=15;i>0;i--){
-		if (boxVal[box_num] >= i) {
-			var row = (Math.ceil(i/5));
-			var col = (i - 5*(Math.ceil(i/5) - 1));
-			var dot = $('#boxes li:nth-child('+(box_num+1)+') tr:nth-child('+row+') td:nth-child('+col+') .dot');
+		var row = (Math.ceil(i/5));
+		var col = (i - 5*(Math.ceil(i/5) - 1));
+		var dot = $('#boxes li:nth-child('+(box_num+1)+') tr:nth-child('+row+') td:nth-child('+col+') .dot');
+		if (boxVal[box_num] >= 16 - i) {
 			dot.css('background-color', 'red');
 		} else {
-			var row = (Math.ceil(i/5));
-			var col = (i - 5*(Math.ceil(i/5) - 1));
-			var dot = $('#boxes li:nth-child('+(box_num+1)+') tr:nth-child('+row+') td:nth-child('+col+') .dot');
 			dot.css('background-color', '#711111');
 		}
 	}
@@ -218,11 +215,18 @@ function runCommands(cmds,i,step) {
 		next_command = 0;
 
 		if (cmds[i]['cmd'] == 'inc') {
-			boxVal[cmds[i]['box']]++;
-			next_command = cmds[i]['nxt_cmd'];
-			if (!soundOff) {
-				document.getElementById('beep').play();
+			if (boxVal[cmds[i]['box']] < 15) {
+				boxVal[cmds[i]['box']]++;
+				
+				if (!soundOff) {
+					document.getElementById('beep').play();
+				}
+			} else {
+				if (!soundOff) {
+					document.getElementById('fail').play();
+				}
 			}
+			next_command = cmds[i]['nxt_cmd'];
 			
 		} else if (cmds[i]['cmd'] == 'deb') {
 			if (boxVal[cmds[i]['box']] > 0) {
