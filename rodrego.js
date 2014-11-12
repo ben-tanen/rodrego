@@ -8,6 +8,7 @@ var reset = false;
 
 function initalize() {
 	$('.options').toggle();
+	$("#reset_btn").prop("disabled",true);
 	for (i=0;i<10;i++){
 		boxVal[i] = i;	
 	}
@@ -305,12 +306,13 @@ $(document).ready(function() {
 
 	$('#play_btn').click(function() {
 		cmds = readCommands();
-		if (typeof cmds == 'string') {
+		if (typeof cmds == 'string' || cmds.length == 0) {
 			var error_str = '<p id="fail_msg">' + cmds + '</p>'
 			$('.cmd_display').html(error_str);
 			document.getElementById('fail').play();
 		} else {
 			$("#play_btn").prop("disabled",true);
+			$("#reset_btn").prop("disabled",false);
 			printCommands(cmds);
 			setTimeout(function (){
         		runCommands(cmds,0,false);
@@ -320,9 +322,6 @@ $(document).ready(function() {
 
 	$('#reset_btn').click(function() {
 		reset = true;
-		$('#cmd_input').val('');
-		$('.cmd_display').html('');
-
 	});
 
 	$('#step_btn').click(function() {
