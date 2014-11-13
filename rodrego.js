@@ -260,6 +260,7 @@ function runCommands(cmds,i,step) {
 		} else if (reset) {
 			reset = false;
 			$("#play_btn").prop("disabled",false);
+			$("#reset_btn").prop("disabled",true);
 		}
 		
 
@@ -269,6 +270,7 @@ function runCommands(cmds,i,step) {
 			document.getElementById('success').play();
 		}
 		$("#play_btn").prop("disabled",false);
+		$("#reset_btn").prop("disabled",true);
 		$('.cmd_output_line').css('color', 'white');
 		$('.cmd_output_line:nth-child('+(i+1)+')').css('color', 'yellow');
 		stepCmd = -1;
