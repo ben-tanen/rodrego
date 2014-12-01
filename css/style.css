@@ -175,6 +175,7 @@ table {
 	width: 180px;
 	height: 100%;
 	border: 1px solid white;
+	overflow: scroll;
 }
 
 .cmd_output_line {
@@ -206,7 +207,9 @@ table {
 #fail_msg {
 	text-align: center;
 	color: red;
+	margin: auto;
 	margin-top: 10px;
+	width: 160px;
 }
 
 .input {
