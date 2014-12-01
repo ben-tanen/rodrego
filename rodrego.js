@@ -54,14 +54,17 @@ function changeSound() {
 }
 
 function customScript(script_num) {
-	if (script_num == 1) {
+	if (script_num == 'simple') {
 		cmd_string = '### This is a Simple Script ###\n\n# MiXED CaSE\n1  iNc    2 2\n2 end\n\n#The next line is\n#commented out\n#3 inc 2 2';
-	} else if (script_num == 2) {
+	} else if (script_num == 'add') {
 		cmd_string = '1 deb 4 1 2\n2 deb 2 3 4\n3 inc 4 2\n4 deb 3 5 6\n5 inc 4 4\n6 end\n';
-	} else if (script_num == 3) {
+	} else if (script_num == 'sub') {
 		cmd_string = '1 deb 4 1 2\n2 deb 2 3 7\n3 deb 3 2 4\n4 inc 2 5\n5 deb 2 6 9\n6 inc 4 5\n7 deb 3 8 9\n8 inc 4 7\n9 end';
+	} else if (script_num == 'mul') {
+		cmd_string = '1 deb 6 1 2\n2 deb 4 2 3\n3 deb 2 4 9\n4 deb 3 5 6\n5 inc 6 4\n6 deb 6 7 3\n7 inc 4 8\n8 inc 3 6\n9 end';
+	} else if (script_num == 'extended') {
+		cmd_string = '1 deb 4 1 2\n2 deb 2 3 7\n3 deb 3 2 4\n4 inc 2 5\n5 deb 2 6 9\n6 inc 4 5\n7 deb 3 8 9\n8 inc 4 7\n9 end\n10 inc 2 2\n11 deb 1 1 1\n12 inc 2 2\n13 deb 1 1 1\n14 inc 2 2\n15 deb 1 1 1\n16 inc 2 2';
 	} else {
-		
 		cmd_string = '# custom script here';
 	}
 	$('#cmd_input').val(cmd_string);
