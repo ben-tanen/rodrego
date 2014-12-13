@@ -71,7 +71,7 @@ function customScript(script_num) {
 }
 
 function cmdLineParse(str) {
-	var cmd_array = str.replace(/#.*/g, ' ').trim().toLowerCase().replace(/\s{2,}/g, ' ').split(' ');
+	var cmd_array = str.replace(/#.*/g, ' ').replace(/\[.*\]/g, '').trim().toLowerCase().replace(/\s{2,}/g, ' ').split(' ');
 	cmd = {'cmd': cmd_array[1], 'cmd_num': parseInt(cmd_array[0]), 'fail': false}
 
 	if ((cmd['cmd'] == 'inc' && cmd_array.length != 4) || 
