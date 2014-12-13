@@ -43,10 +43,17 @@ a {
 	padding: 10px 10px 10px 10px;
 }
 
+#guide_button {
+	width: 20px;
+	position: absolute;
+	top: 0px;
+	right: -25px;
+}
+
 #options_button {
 	width: 20px;
 	position: absolute;
-	top: 0;
+	top: 21px;
 	right: -25px;
 }
 
@@ -98,6 +105,22 @@ a {
 	position: absolute;
 	bottom: 10px;
 	right: 10px;
+}
+
+.user_guide {
+	position: absolute;
+	width: 500px;
+	height: 500px;
+	background-color: gray;
+	padding: 15px;
+	border-radius: 5px;
+	z-index: 10;
+	left: 50%;
+	top: 50%;
+	margin-top: -280px;
+    margin-left: -250px;
+    display: none;
+    overflow: scroll;
 }
 
 .display {

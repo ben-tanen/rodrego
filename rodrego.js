@@ -288,6 +288,7 @@ $(document).ready(function() {
 
 	$('.wrap').click(function() {
 		$('.custom_script').css('display', 'none');
+		$('.user_guide').css('display', 'none');
 		$('.wrap').css('display', 'none');
 	});
 
