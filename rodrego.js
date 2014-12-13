@@ -247,6 +247,8 @@ function runCommands(cmds,i,step) {
 			}
 		}
 
+		updateScreen();
+
 		for (j=0;j<cmds.length;j++){
 			if (cmds[j]['cmd_num'] == next_command) {
 				i = j;
@@ -267,7 +269,7 @@ function runCommands(cmds,i,step) {
 		}
 		
 
-        updateScreen();
+        
 	} else {
 		if (!soundOff) {
 			document.getElementById('success').play();

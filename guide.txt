@@ -1,0 +1,27 @@
+Welcome to RodRego!
+
+RodRego is a simple register machine simulator illustrating the computational capabilities of the INC/DEB language model. By inputting different commands, you can increment and decrement the ten registers (or boxes) to simulate different computations.
+
+There are three different commands available: INC, DEB, and END
+
+You can use INC to increment a particular register by one. The syntax for the INC command is: [step] INC [register] [go to step]
+
+You can use DEB to decrement a particular register by one. The syntax for the DEB command is: [step] DEB [register] [go to step] [go to step if register already empty]
+
+Finally, you can use the END command to end a script from running.
+
+An example script might look like:
+1 INC 2 2    # Increment 2nd register
+2 DEB 3 2 3  # Decrement 3rd register and repeat until empty
+3 END        # End program
+
+As you can see, you can comment a line of your script by using '#'. Anything after a '#'' will be ignored.
+
+The order and number of your steps also don't matter, as long as they being on step #1 and create a full stream (you can go from one to the other). For example, you could have the following script:
+1  INC 2 8      # Increment 2nd register, go to step 8
+98 DEB 5 42 42  # Decrement 5th register, go to step 42
+42 END          # End program
+8  INC 3 98     # Increment 3rd register, go to step 98
+
+For example scripts, try out the included samples. For more information about RodRego and register machines, read "Secrets of Computer Power Revealed”[Link to be included]. If you read through it, and do the exercises, you will be a master of register machines in no time.
+
