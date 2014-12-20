@@ -109,7 +109,7 @@ a {
 
 .user_guide {
 	position: absolute;
-	width: 500px;
+	width: 550px;
 	height: 500px;
 	background-color: gray;
 	padding: 15px;
@@ -120,7 +120,7 @@ a {
 	margin-top: -280px;
     margin-left: -250px;
     display: none;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .display {
@@ -198,7 +198,7 @@ table {
 	width: 180px;
 	height: 100%;
 	border: 1px solid white;
-	overflow: scroll;
+	overflow: auto;
 }
 
 .cmd_output_line {
