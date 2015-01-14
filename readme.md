@@ -34,10 +34,14 @@ For more information about the original project, [click here](http://sites.tufts
 	- [x] Check Command Stream (progression from 1 to 2 to 3...)
 	- [x] In-line Commenting (ex: `1 inc 2 2 # comment`)
 - [ ] Additional Features
-	- [ ] "How To"/"About" Page
+	- [ ] Number / Bean Count
+		- [ ] Add Number Counting
+		- [ ] Add Automatic Toggle (> 15)
+		- [ ] Add Toggle Option
+	- [x] "How To"/"About" Page
 		- [x] Implement Code
-		- [ ] Fix Styling
-		- [ ] Finalize Wording
+		- [x] Fix Styling
+		- [x] Finalize Wording
 	- [x] Variable Speed
 	- [x] Load Standard Scripts
 		- [x] Pre-set input (Addition, Subtraction, etc.)
