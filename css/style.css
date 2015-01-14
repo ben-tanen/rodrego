@@ -141,7 +141,7 @@ a {
 	border-bottom: 1px solid white;
 }
 
-#boxes li p {
+#box_num {
 	position: absolute;
 	top: 11px;
 	margin-left: 7px;
@@ -153,6 +153,17 @@ a {
 table {
 	margin: 3px 0 0 25px;
 	padding: 0;
+}
+
+#value_num {
+	color: white;
+	position: absolute;
+	font-size: 23px;
+	top: 9px;
+	left: 28px;
+	width: 62px;
+	text-align: center;
+	display: none;
 }
 
 .dot {
@@ -172,11 +183,6 @@ table {
 	border: 1px white solid;
 	color: white;
 	font-size: 15px;
-}
-
-#boxes li button p {
-	position: relative;
-	color: blue;
 }
 
 .inc {
