@@ -35,9 +35,9 @@ For more information about the original project, [click here](http://sites.tufts
 	- [x] In-line Commenting (ex: `1 inc 2 2 # comment`)
 - [ ] Additional Features
 	- [ ] Number / Bean Count
-		- [ ] Add Number Counting
+		- [x] Add Number Counting
 		- [ ] Add Automatic Toggle (> 15)
-		- [ ] Add Toggle Option
+		- [x] Add Toggle Option
 	- [x] "How To"/"About" Page
 		- [x] Implement Code
 		- [x] Fix Styling

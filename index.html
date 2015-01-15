@@ -77,6 +77,7 @@
 		<img id='options_button' src='img/gears2.png' />
 		<div class='options'>
 			<p onclick='changeSpeed()'>Change Speed</p>
+			<p id='showNum' onclick='toggleShowNum()'>Show Box Count</p>
 			<p onclick='changeSound()'>Sound Off</p>
 			<p>Run Script</p>
 			<ul style='list-style: disc; position: relative; left: 20px;'>
@@ -95,8 +96,8 @@
 			<ul id='boxes'>
 				<li id="box0">
 					<p id='box_num'>0</p>
-					<div id='value'>
-						<p id='value_num'>0</p>
+					<div class='value'>
+						<p class='value_num'>0</p>
 						<table>
 						<tr>
 							<td><div id='on' class='dot'></div></td>
@@ -126,8 +127,8 @@
 				</li>
 				<li id="box1">
 					<p id='box_num'>1</p>
-					<div id='value'>
-						<p id='value_num'>1</p>
+					<div class='value'>
+						<p class='value_num'>1</p>
 						<table>
 						<tr>
 							<td><div id='on' class='dot'></div></td>
@@ -157,8 +158,8 @@
 				</li>
 				<li id="box2">
 					<p id='box_num'>2</p>
-					<div id='value'>
-						<p id='value_num'>2</p>
+					<div class='value'>
+						<p class='value_num'>2</p>
 						<table>
 						<tr>
 							<td><div id='on' class='dot'></div></td>
@@ -188,8 +189,8 @@
 				</li>
 				<li id="box3">
 					<p id='box_num'>3</p>
-					<div id='value'>
-						<p id='value_num'>0</p>
+					<div class='value'>
+						<p class='value_num'>0</p>
 						<table>
 						<tr>
 							<td><div id='on' class='dot'></div></td>
@@ -219,8 +220,8 @@
 				</li>
 				<li id="box4">
 					<p id='box_num'>4</p>
-					<div id='value'>
-						<p id='value_num'>0</p>
+					<div class='value'>
+						<p class='value_num'>0</p>
 						<table>
 						<tr>
 							<td><div id='on' class='dot'></div></td>
@@ -250,8 +251,8 @@
 				</li>
 				<li id="box5">
 					<p id='box_num'>5</p>
-					<div id='value'>
-						<p id='value_num'>0</p>
+					<div class='value'>
+						<p class='value_num'>0</p>
 						<table>
 						<tr>
 							<td><div id='on' class='dot'></div></td>
@@ -281,8 +282,8 @@
 				</li>
 				<li id="box6">
 					<p id='box_num'>6</p>
-					<div id='value'>
-						<p id='value_num'>0</p>
+					<div class='value'>
+						<p class='value_num'>0</p>
 						<table>
 						<tr>
 							<td><div id='on' class='dot'></div></td>
@@ -312,8 +313,8 @@
 				</li>
 				<li id="box7">
 					<p id='box_num'>7</p>
-					<div id='value'>
-						<p id='value_num'>0</p>
+					<div class='value'>
+						<p class='value_num'>0</p>
 						<table>
 						<tr>
 							<td><div id='on' class='dot'></div></td>
@@ -343,8 +344,8 @@
 				</li>
 				<li id="box8">
 					<p id='box_num'>8</p>
-					<div id='value'>
-						<p id='value_num'>0</p>
+					<div class='value'>
+						<p class='value_num'>0</p>
 						<table>
 						<tr>
 							<td><div id='on' class='dot'></div></td>
@@ -374,8 +375,8 @@
 				</li>
 				<li id="box9">
 					<p id='box_num'>9</p>
-					<div id='value'>
-						<p id='value_num'>0</p>
+					<div class='value'>
+						<p class='value_num'>0</p>
 						<table>
 						<tr>
 							<td><div id='on' class='dot'></div></td>

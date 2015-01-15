@@ -4,6 +4,7 @@ var max_limit = 15;
 var cmdSpeed = 500;
 var stepCmd = -1;
 var soundOff = false;
+var showNum = false;
 var reset = false;
 
 function initalize() {
@@ -15,8 +16,37 @@ function initalize() {
 	updateScreen();
 }
 
+function toggleShowNum() {
+	if (showNum) {
+		// show all numbers
+		$('.value_num').css({'visibility': 'hidden'});
+		
+		// hide boxes
+		$('.value table').css({'visibility': 'visible'});
+
+		// change text
+		$('#showNum').text('Show Box Count');
+
+		// change showNum
+		showNum = false;
+	} else {
+		// hide all numbers
+		$('.value_num').css({'visibility': 'visible'});
+		
+		// show boxes
+		$('.value table').css({'visibility': 'hidden'});
+		
+		// change text
+		$('#showNum').text('Show Box Dots');
+
+		// change showNum
+		showNum = true;
+	}
+}
+
 function updateScreen() {
 	for (var i=0;i<10;i++){
+		$('#boxes li:nth-child('+(i+1)+') .value_num').text(boxVal[i]);
 		updateDots(i);
 	}
 }

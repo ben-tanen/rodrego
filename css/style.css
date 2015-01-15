@@ -155,7 +155,7 @@ table {
 	padding: 0;
 }
 
-#value_num {
+.value_num {
 	color: white;
 	position: absolute;
 	font-size: 23px;
@@ -163,7 +163,7 @@ table {
 	left: 28px;
 	width: 62px;
 	text-align: center;
-	display: none;
+	visibility: hidden;
 }
 
 .dot {
