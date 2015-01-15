@@ -33,8 +33,8 @@ For more information about the original project, [click here](http://sites.tufts
 	- [x] Check Individual Command (cmdFail)
 	- [x] Check Command Stream (progression from 1 to 2 to 3...)
 	- [x] In-line Commenting (ex: `1 inc 2 2 # comment`)
-- [ ] Additional Features
-	- [ ] Number / Bean Count
+- [x] Additional Features
+	- [x] Number / Bean Count
 		- [x] Add Number Counting
 		- [x] Add Automatic Toggle (> 15)
 		- [x] Add Toggle Option
@@ -45,9 +45,6 @@ For more information about the original project, [click here](http://sites.tufts
 	- [x] Variable Speed
 	- [x] Load Standard Scripts
 		- [x] Pre-set input (Addition, Subtraction, etc.)
-		- [ ] Add more scripts 
+		- [x] Add all scripts 
 		- [x] Repeated Script Input
-	- [ ] Script Input
-		- [ ] File Parsing
-	- [ ] Saving Scripts (?)
 	- [x] Sound Off Button
