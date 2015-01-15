@@ -36,7 +36,7 @@ For more information about the original project, [click here](http://sites.tufts
 - [ ] Additional Features
 	- [ ] Number / Bean Count
 		- [x] Add Number Counting
-		- [ ] Add Automatic Toggle (> 15)
+		- [x] Add Automatic Toggle (> 15)
 		- [x] Add Toggle Option
 	- [x] "How To"/"About" Page
 		- [x] Implement Code

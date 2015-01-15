@@ -1,6 +1,6 @@
 var boxVal = new Array(10);
 var cmds = [ ];
-var max_limit = 15;
+var max_limit = 1000;
 var cmdSpeed = 500;
 var stepCmd = -1;
 var soundOff = false;
@@ -18,35 +18,40 @@ function initalize() {
 
 function toggleShowNum() {
 	if (showNum) {
-		// show all numbers
+		// hide numbers, show boxes
+		// change text, change showNum
 		$('.value_num').css({'visibility': 'hidden'});
-		
-		// hide boxes
 		$('.value table').css({'visibility': 'visible'});
-
-		// change text
 		$('#showNum').text('Show Box Count');
-
-		// change showNum
 		showNum = false;
 	} else {
-		// hide all numbers
+		// show numbers, hide boxes
+		// change text, change showNum
 		$('.value_num').css({'visibility': 'visible'});
-		
-		// show boxes
 		$('.value table').css({'visibility': 'hidden'});
-		
-		// change text
 		$('#showNum').text('Show Box Dots');
-
-		// change showNum
 		showNum = true;
+	}
+
+	for (var i=0;i<10;i++) {
+		if (boxVal[i] > 15) {
+			$('#boxes li:nth-child('+(i+1)+') .value_num').css({'visibility': 'visible'});
+			$('#boxes li:nth-child('+(i+1)+') table').css({'visibility': 'hidden'});
+
+		}
 	}
 }
 
 function updateScreen() {
 	for (var i=0;i<10;i++){
 		$('#boxes li:nth-child('+(i+1)+') .value_num').text(boxVal[i]);
+		if (boxVal[i] > 15) {
+			$('#boxes li:nth-child('+(i+1)+') .value_num').css({'visibility': 'visible'});
+			$('#boxes li:nth-child('+(i+1)+') table').css({'visibility': 'hidden'});
+		} else if (!showNum && boxVal[i] <= 15) {
+			$('#boxes li:nth-child('+(i+1)+') .value_num').css({'visibility': 'hidden'});
+			$('#boxes li:nth-child('+(i+1)+') table').css({'visibility': 'visible'});
+		}
 		updateDots(i);
 	}
 }
@@ -249,16 +254,9 @@ function runCommands(cmds,i,step) {
 		next_command = 0;
 
 		if (cmds[i]['cmd'] == 'inc') {
-			if (boxVal[cmds[i]['box']] < 15) {
-				boxVal[cmds[i]['box']]++;
-				
-				if (!soundOff) {
-					document.getElementById('beep').play();
-				}
-			} else {
-				if (!soundOff) {
-					document.getElementById('fail').play();
-				}
+			boxVal[cmds[i]['box']]++;
+			if (!soundOff) {
+				document.getElementById('beep').play();
 			}
 			next_command = cmds[i]['nxt_cmd'];
 			
