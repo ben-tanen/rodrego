@@ -71,9 +71,14 @@ a {
 	list-style: none;
 }
 
-.options li:hover, .options p:nth-child(1):hover, .options p:nth-child(2):hover {
+.options li:hover, .options p:hover {
 	text-decoration: underline;
 	cursor: pointer;
+}
+
+#runScriptTitle {
+	text-decoration: none;
+	cursor: default;
 }
 
 .custom_script {
