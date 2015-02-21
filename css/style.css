@@ -9,17 +9,6 @@ body {
 	background-color: black;
 }
 
-.wrap {
-	position: absolute;
-	background-color: gray;
-	left: 0;
-	width: 110%;
-	height: 100%;
-	z-index: 5;
-	opacity: .8;
-	display: none;
-}
-
 a {
 	text-decoration: underline;
 }

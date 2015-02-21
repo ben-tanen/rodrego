@@ -7,8 +7,8 @@ var soundOff = false;
 var showNum = false;
 var reset = false;
 
+// initalize boxValues / adjust for beginning of program
 function initalize() {
-	$('.options').toggle();
 	$("#reset_btn").prop("disabled",true);
 	for (i=0;i<10;i++){
 		boxVal[i] = i;	
@@ -16,6 +16,7 @@ function initalize() {
 	updateScreen();
 }
 
+// option to turn on / off showing box numbers vs. box dots
 function toggleShowNum() {
 	if (showNum) {
 		// hide numbers, show boxes
@@ -33,11 +34,11 @@ function toggleShowNum() {
 		showNum = true;
 	}
 
+	// automatically sets it to box numbers if over the limit of dots
 	for (var i=0;i<10;i++) {
 		if (boxVal[i] > 15) {
 			$('#boxes li:nth-child('+(i+1)+') .value_num').css({'visibility': 'visible'});
 			$('#boxes li:nth-child('+(i+1)+') table').css({'visibility': 'hidden'});
-
 		}
 	}
 }
@@ -69,6 +70,7 @@ function updateDots(box_num) {
 	}
 }
 
+// change the speed of running commands (to faster or slower)
 function changeSpeed() {
 	var result = prompt("Enter a new speed (in ms between 100 and 100,000)",  cmdSpeed);
  
@@ -77,6 +79,7 @@ function changeSpeed() {
     	}
 }
 
+// turn off or on sound
 function changeSound() {
 	if (soundOff) {
 		soundOff = false;
@@ -88,16 +91,19 @@ function changeSound() {
 
 }
 
-function customScript(script_num) {
-	if (script_num == 'simple') {
+// used for inputting custom scripts into command input
+// scripts originally give from RodRego original
+// depending on script type that is pass, edit the string & edit input box
+function customScript(script_type) {
+	if (script_type == 'simple') {
 		cmd_string = '### This is a Simple Script ###\n\n# MiXED CaSE\n1  iNc    2 2\n2 end\n\n#The next line is\n#commented out\n#3 inc 2 2';
-	} else if (script_num == 'add') {
+	} else if (script_type == 'add') {
 		cmd_string = '1 deb 4 1 2\n2 deb 2 3 4\n3 inc 4 2\n4 deb 3 5 6\n5 inc 4 4\n6 end\n';
-	} else if (script_num == 'sub') {
+	} else if (script_type == 'sub') {
 		cmd_string = '1 deb 4 1 2\n2 deb 2 3 7\n3 deb 3 2 4\n4 inc 2 5\n5 deb 2 6 9\n6 inc 4 5\n7 deb 3 8 9\n8 inc 4 7\n9 end';
-	} else if (script_num == 'mul') {
+	} else if (script_type == 'mul') {
 		cmd_string = '1 deb 6 1 2\n2 deb 4 2 3\n3 deb 2 4 9\n4 deb 3 5 6\n5 inc 6 4\n6 deb 6 7 3\n7 inc 4 8\n8 inc 3 6\n9 end';
-	} else if (script_num == 'extended') {
+	} else if (script_type == 'extended') {
 		cmd_string = '1 deb 4 1 2\n2 deb 2 3 7\n3 deb 3 2 4\n4 inc 2 5\n5 deb 2 6 9\n6 inc 4 5\n7 deb 3 8 9\n8 inc 4 7\n9 end\n10 inc 2 2\n11 deb 1 1 1\n12 inc 2 2\n13 deb 1 1 1\n14 inc 2 2\n15 deb 1 1 1\n16 inc 2 2';
 	} else {
 		cmd_string = '# custom script here';
@@ -105,10 +111,19 @@ function customScript(script_num) {
 	$('#cmd_input').val(cmd_string);
 }
 
+// function to parse command lines, returning command / arguments as object
 function cmdLineParse(str) {
+	// replaces multiple spaces with just one space
+	// replaces all comments, denoted with either []s or #s
+	// trims before / after spaces
+	// splits string up into array based on spaces
 	var cmd_array = str.replace(/#.*/g, ' ').replace(/\[.*\]/g, '').trim().toLowerCase().replace(/\s{2,}/g, ' ').split(' ');
+
+	// from spliced string, take cmd type (inc,deb,end) and cmd number
 	cmd = {'cmd': cmd_array[1], 'cmd_num': parseInt(cmd_array[0]), 'fail': false}
 
+	// depending on type of command, make sure correct number of arguments
+	// if not, report failure
 	if ((cmd['cmd'] == 'inc' && cmd_array.length != 4) || 
 	    (cmd['cmd'] == 'deb' && cmd_array.length != 5) ||
 	    (cmd['cmd'] == 'end' && cmd_array.length != 2)) {
@@ -116,6 +131,9 @@ function cmdLineParse(str) {
 		return cmd;
 	}
 
+	// if cmd is inc or deb, pull information from cmd_array
+	// both commands need box number and next command
+	// only deb commands need fail command number
 	if (cmd['cmd'] == 'inc' || cmd['cmd'] == 'deb') {
 		cmd['box'] = parseInt(cmd_array[2]);
 		cmd['nxt_cmd'] = parseInt(cmd_array[3]);
@@ -124,6 +142,7 @@ function cmdLineParse(str) {
 		}
 	}
 
+	// check command for failure
 	if (cmdFail(cmd)) {
 		cmd['fail'] = true;
 	}
@@ -131,45 +150,66 @@ function cmdLineParse(str) {
 	return cmd;
 }
 
+// checks if a command (in obj-form) fails any particular tests
 function cmdFail(cmd) {
+	// if cmd is 'end' and 1 arg isn't number -> fail
 	if (cmd['cmd'] == 'end') {
 		if (isNaN(cmd['cmd_num'])) {
 			return true;
 		}
+
+	// if cmd is either 'inc' or 'deb'
 	} else if (cmd['cmd'] == 'inc' || cmd['cmd'] == 'deb') {
+		// if command attempts to edit box outside of correct range -> fail
 		if (cmd['box'] < 0 || cmd['box'] > 9) {
 			return true;
+
+		// if cmd's box, next command, command number are not numbers -> fail
 		} else if (isNaN(cmd['box']) || isNaN(cmd['nxt_cmd']) || isNaN(cmd['cmd_num'])) {
 			return true;
+
+		// if cmd is 'deb' and fail command is NaN -> fail
 		} else if (cmd['cmd'] == 'deb' && isNaN(cmd['fail_cmd'])) {
 			return true;
 		}
+	// if command is anything other than 'inc','deb','end' -> fail
 	} else {
 		return true;
 	}
 
+	// all other commands must be correct
 	return false;
 }
 
 function readCommands() {
 	cmds = [ ];
+
+	// split up commands based on new-line characters
 	var cmd_lines = $('#cmd_input').val().split('\n');
+
+	// for each command line
 	for (i=0;i<cmd_lines.length;i++){
+		// if command is of length zero or starts with comment (denoted by #)
+		// skip line / don't parse
+		if (cmd_lines[i].trim().length == 0 || cmd_lines[i].indexOf('#') == 0) continue;
 
-		if (cmd_lines[i].trim().length == 0 || cmd_lines[i].indexOf('#') == 0) {
-			continue;
-		}
-
+		// parse command string, returned as object
 		cmd = cmdLineParse(cmd_lines[i]);
 
+		// if command doesn't fail, push it onto commands array
 		if (cmd['fail'] == false){
 			cmds.push(cmd);
+
+		// if command failed for somer eason, report which line failed
 		} else {
 			cmds = 'Line ' + (i+1) + ' Failed: Check for Proper Syntax';
 			return cmds;
 		}	
 	}
 
+	// once all commands are read in, check that there is a correct stream
+	// can go from 1 to next command to next command to ... until end
+	// if stream is invalid, will return error string
 	cmds = checkCmdStream(cmds);
 	return cmds;
 }
@@ -181,8 +221,6 @@ function checkCmdStream(cmds) {
 	        var x = a['cmd_num']; var y = b['cmd_num'];
 	        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
 	});
-
-	
 
 	for (i=0;i<cmds.length;i++) {
 		cmd_numbers.push(cmds[i]['cmd_num']);
@@ -295,8 +333,6 @@ function runCommands(cmds,i,step) {
 			$("#play_btn").prop("disabled",false);
 			$("#reset_btn").prop("disabled",true);
 		}
-		
-
         
 	} else {
 		if (!soundOff) {
@@ -308,12 +344,12 @@ function runCommands(cmds,i,step) {
 		$('.cmd_output_line:nth-child('+(i+1)+')').css('color', 'yellow');
 		stepCmd = -1;
 	}
-	
 }
 
 $(document).ready(function() {
 	initalize();
 
+	// map guide and options pop-up to correct buttons, set settings
 	user_guide_popup = new jBox('Modal',{
 		attach: $('#guide_button'),
 		width: 600 ,
@@ -330,6 +366,7 @@ $(document).ready(function() {
 		content: $('.options')
 	});
 
+	// map tooltips to guide / options button, set settings
 	userguide_tooltip = new jBox('Tooltip',{
 		attach: $('#guide_button'),
 		content: "View User Guide",
@@ -350,16 +387,8 @@ $(document).ready(function() {
 		outside: 'x'
 	});
 
-	$('.wrap').click(function() {
-		$('.custom_script').css('display', 'none');
-		$('.user_guide').css('display', 'none');
-		$('.wrap').css('display', 'none');
-	});
-
-	/* $('#options_button').click(function () {
-		$('.options').slideToggle('fast');
-	}); */
-
+	// map 'inc' & 'deb' buttons to edit their particular box
+	// finding the box number and just incrementing / decrementing
 	$('.inc').click(function() {
 		box_num = $(this).parent().index();
 		if (boxVal[box_num] < max_limit) {
@@ -376,42 +405,64 @@ $(document).ready(function() {
 		}
 	});
 
+	// attempt to run through commands
 	$('#play_btn').click(function() {
+		// read commands
 		cmds = readCommands();
+
+		// if no commands read or cmds is an error string
 		if (typeof cmds == 'string' || cmds.length == 0) {
+			// report error message & play fail sound
 			var error_str = '<p id="fail_msg">' + cmds + '</p>'
 			$('.cmd_display').html(error_str);
 			document.getElementById('fail').play();
+
+		// commands are valid
 		} else {
+			// while running commands, disable play btn, enable reset btn
 			$("#play_btn").prop("disabled",true);
 			$("#reset_btn").prop("disabled",false);
+
+			// print commands to output
 			printCommands(cmds);
+
+			// delay 300ms, run commands
 			setTimeout(function (){
         		runCommands(cmds,0,false);
         	}, 300);
 		}
 	});
 
+	// enable resetting (for when it is next checked)
 	$('#reset_btn').click(function() {
 		reset = true;
 	});
 
+	// attempt to run through the commands one-by-one
 	$('#step_btn').click(function() {
+		// read the commands
 		cmds = readCommands();
 
+		// stepCmd = -1 when commandstream hasn't started yet
 		if (stepCmd == -1) {
+			// makes sure commands are valid (not error message)
 			if (typeof cmds == 'string') {
+				// report error message / play sound
 				var error_str = '<p id="fail_msg">' + cmds + '</p>'
 				$('.cmd_display').html(error_str);
 				document.getElementById('fail').play();
+
 			} else {
+				// print commands to output & run commands from start
 				printCommands(cmds);
 				setTimeout(function (){
 	        		runCommands(cmds,0,true);
 	        	}, 200);
 			}
+
+		// otherwise, run next command
 		} else {
 			runCommands(cmds,stepCmd,true);
 		}
-	})
-})
+	});
+});
