@@ -57,13 +57,7 @@ a {
 }
 
 .options {
-	color: white;
-	position: absolute;
-	top: 43px;
-	right: -165px;
-	background-color: gray;
-	border-radius: 5px;
-	width: 150px;
+	width: 200px;
 	padding: 5px;
 }
 

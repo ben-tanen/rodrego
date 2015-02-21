@@ -318,8 +318,16 @@ $(document).ready(function() {
 		attach: $('#guide_button'),
 		width: 600 ,
 		height: 500,
-		title: "<b>Welcome to RodRego!",
+		title: "<b>Welcome to RodRego!</b>",
 		content: $('.user_guide')
+	});
+
+	options_popup = new jBox('Modal',{
+		attach: $('#options_button'),
+		width: 230 ,
+		height: 250,
+		title: "Options",
+		content: $('.options')
 	});
 
 	userguide_tooltip = new jBox('Tooltip',{
@@ -348,9 +356,9 @@ $(document).ready(function() {
 		$('.wrap').css('display', 'none');
 	});
 
-	$('#options_button').click(function () {
+	/* $('#options_button').click(function () {
 		$('.options').slideToggle('fast');
-	});
+	}); */
 
 	$('.inc').click(function() {
 		box_num = $(this).parent().index();
