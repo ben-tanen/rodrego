@@ -7,7 +7,6 @@ body {
 	padding: 0 0 0 10px;
 	font-family: 'Avenir';
 	background-color: black;
-	color: white;
 }
 
 .wrap {
@@ -21,18 +20,18 @@ body {
 	display: none;
 }
 
-#title {
-	color: white;
-}
-
 a {
 	text-decoration: underline;
-	color: white;
 }
 
 .header {
+	color: white;
 	height: 80px;
 	text-align: center;
+}
+
+.header a {
+	color: white;
 }
 
 .main {
@@ -58,6 +57,7 @@ a {
 }
 
 .options {
+	color: white;
 	position: absolute;
 	top: 43px;
 	right: -165px;
@@ -113,10 +113,7 @@ a {
 }
 
 .user_guide {
-	position: absolute;
-	width: 550px;
-	height: 500px;
-	background-color: gray;
+/*	background-color: gray;
 	padding: 15px;
 	border-radius: 5px;
 	z-index: 10;
@@ -124,8 +121,9 @@ a {
 	top: 50%;
 	margin-top: -280px;
     margin-left: -250px;
-    display: none;
-    overflow: auto;
+*/    
+	display: none;
+	color: black;
 }
 
 .display {

@@ -71,19 +71,19 @@ function updateDots(box_num) {
 
 function changeSpeed() {
 	var result = prompt("Enter a new speed (in ms between 100 and 100,000)",  cmdSpeed);
-    
-    if (result != null && !isNaN(result) && result >= 100 && result <= 100000) {
-        cmdSpeed = parseInt(result);
-    }
+ 
+	if (result != null && !isNaN(result) && result >= 100 && result <= 100000) {
+        	cmdSpeed = parseInt(result);
+    	}
 }
 
 function changeSound() {
 	if (soundOff) {
 		soundOff = false;
-		$('.options p:nth-child(2)').text('Sound Off');
+		$('.options p:nth-child(3)').text('Sound Off');
 	} else {
 		soundOff = true;
-		$('.options p:nth-child(2)').text('Sound On');
+		$('.options p:nth-child(3)').text('Sound On');
 	}
 
 }
@@ -313,6 +313,34 @@ function runCommands(cmds,i,step) {
 
 $(document).ready(function() {
 	initalize();
+
+	user_guide_popup = new jBox('Modal',{
+		attach: $('#guide_button'),
+		width: 600 ,
+		height: 500,
+		title: "<b>Welcome to RodRego!",
+		content: $('.user_guide')
+	});
+
+	userguide_tooltip = new jBox('Tooltip',{
+		attach: $('#guide_button'),
+		content: "View User Guide",
+		position: {
+			x: 'right',
+			y: 'center'
+		},
+		outside: 'x'
+	});
+
+	tooltip_test = new jBox('Tooltip',{
+		attach: $('#options_button'),
+		content: "Edit Options",
+		position: {
+			x: 'right',
+			y: 'center'
+		},
+		outside: 'x'
+	});
 
 	$('.wrap').click(function() {
 		$('.custom_script').css('display', 'none');

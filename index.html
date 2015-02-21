@@ -3,10 +3,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>RodRego</title>
+	<link rel="stylesheet" href="css/jBox.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" type="image/png" href="img/rodrego_icon.jpg">
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script src="rodrego.js"></script>
+	<script src="js/lib/jquery.min.js"></script>
+	<script src="js/lib/jBox.min.js"></script>
+	<script src="js/rodrego.js"></script>
 </head>
 
 <body>
@@ -16,8 +18,8 @@
 		<input onclick='customScript(100)' type='submit' value='Submit'/>
 	</div>
 
+	<!-- Popup for User Guide -->
 	<div class='user_guide'>
-		<h3>Welcome to RodRego!</h3>
 		<p>RodRego is a simple register machine simulator illustrating the computational capabilities of the INC/DEB language model. By inputting different commands, you can increment and decrement the ten registers (or boxes) to simulate different computations.</p>
 		<br />
 		<p>There are three different commands available: INC, DEB, and END</p>
@@ -73,10 +75,10 @@
 
 
 	<div class='main'>
-		<img id='guide_button' src='img/guide2.png' onclick="$('.user_guide').css('display', 'initial'); $('.wrap').css('display', 'initial');"/>
+		<img id='guide_button' src='img/guide2.png' />
 		<img id='options_button' src='img/gears2.png' />
 		<div class='options'>
-			<p onclick='changeSpeed()'>Change Speed</p>
+			<p onclick="changeSpeed();">Change Speed</p>
 			<p id='showNum' onclick='toggleShowNum();'>Show Box Count</p>
 			<p onclick='changeSound();'>Sound Off</p>
 			<p id='runScriptTitle'>Run Script:</p>
@@ -87,7 +89,7 @@
 				<li onclick="customScript('mul')">Multiplication</li>
 				<li onclick="customScript('extended')">Extended</li>
 				<!-- CustomScript Input (When Available)-->
-				<li onclick="$('.custom_script').css('display', 'initial'); $('.wrap').css('display', 'initial');">Custom</li>
+				<!-- <li onclick="$('.custom_script').css('display', 'initial'); $('.wrap').css('display', 'initial');">Custom</li> -->
 				
 			</ul>
 		</div>
