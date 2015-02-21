@@ -3,22 +3,27 @@
 <head>
 	<meta charset="UTF-8">
 	<title>RodRego</title>
+	<link rel="icon" type="image/png" href="img/rodrego_icon.jpg">
+
+	<!-- custom css & css provided by jBox -->
 	<link rel="stylesheet" href="css/jBox.css">
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="icon" type="image/png" href="img/rodrego_icon.jpg">
+	
+	<!-- jQuery, custom JS, & jBox (for pop-ups) -->
 	<script src="js/lib/jquery.min.js"></script>
 	<script src="js/lib/jBox.min.js"></script>
 	<script src="js/rodrego.js"></script>
 </head>
 
 <body>
+	<!-- popup window for customscript input (currently disabled) -->
 	<div class='custom_script'>
 		<p>Choose a script file to run (in <code>.txt</code> format)</p>
 		<input type='file' />
 		<input onclick='customScript(100)' type='submit' value='Submit'/>
 	</div>
 
-	<!-- Popup for User Guide -->
+	<!-- Popup for User Guide (used by jBox js to make modal popup) -->
 	<div class='user_guide'>
 		<p>RodRego is a simple register machine simulator illustrating the computational capabilities of the INC/DEB language model. By inputting different commands, you can increment and decrement the ten registers (or boxes) to simulate different computations.</p>
 		<br />
@@ -48,7 +53,22 @@
 		<p>For example scripts, try out the included samples. For more information about RodRego and register machines, read <a href='#'>"Secrets of Computer Power Revealed”</a>. If you read through it, and do the exercises, you will be a master of register machines in no time.</p>
 	</div>
 
-	<div class='wrap'>
+	<!-- Popup for Options (used by jBox js to make modal popup) -->
+	<div class='options'>
+		<p onclick="changeSpeed();">Change Speed</p>
+		<p id='showNum' onclick='toggleShowNum();'>Show Box Count</p>
+		<p onclick='changeSound();'>Sound Off</p>
+		<p id='runScriptTitle'>Run Script:</p>
+		<ul style='list-style: disc; position: relative; left: 20px;'>
+			<li onclick="customScript('simple')">Simple</li>
+			<li onclick="customScript('add')">Addition</li>
+			<li onclick="customScript('sub')">Subtraction</li>
+			<li onclick="customScript('mul')">Multiplication</li>
+			<li onclick="customScript('extended')">Extended</li>
+			<!-- CustomScript Input (When Available)-->
+			<!-- <li onclick="$('.custom_script').css('display', 'initial'); $('.wrap').css('display', 'initial');">Custom</li> -->
+			
+		</ul>
 	</div>
 
 	<div class='header'>
@@ -56,45 +76,26 @@
 		<p><a href='http://sites.tufts.edu/rodrego/'>About the Project</a></p>
 	</div>
 
-	<audio id='success'>
-  		<source src="sound/sound3.mp3">
-	</audio>
-
-	<audio id='fail'>
-  		<source src="sound/sound2.mp3">
-	</audio>
-
-	<audio id='beep'>
-  		<source src="sound/sound0.mp3">
-	</audio>
-
-	<audio id='bleep'>
-  		<source src="sound/sound1.mp3">
-	</audio>
-
+	<!-- Sounds used throughout the operation
+		 - Success = when code was successfully run / finished
+		 - Fail    = when code failed because of input error or if box hits 0
+		 - Beep    = when there is an increment
+		 - Bleep   = when there is a decrement -->
+	<audio id='success'><source src="sound/sound3.mp3"></audio>
+	<audio id='fail'><source src="sound/sound2.mp3"></audio>
+	<audio id='beep'><source src="sound/sound0.mp3"></audio>
+	<audio id='bleep'><source src="sound/sound1.mp3"></audio>
 
 
 	<div class='main'>
+		<!-- Buttons used to turn on guide and options pop-ups -->
 		<img id='guide_button' src='img/guide2.png' />
 		<img id='options_button' src='img/gears2.png' />
-		<div class='options'>
-			<p onclick="changeSpeed();">Change Speed</p>
-			<p id='showNum' onclick='toggleShowNum();'>Show Box Count</p>
-			<p onclick='changeSound();'>Sound Off</p>
-			<p id='runScriptTitle'>Run Script:</p>
-			<ul style='list-style: disc; position: relative; left: 20px;'>
-				<li onclick="customScript('simple')">Simple</li>
-				<li onclick="customScript('add')">Addition</li>
-				<li onclick="customScript('sub')">Subtraction</li>
-				<li onclick="customScript('mul')">Multiplication</li>
-				<li onclick="customScript('extended')">Extended</li>
-				<!-- CustomScript Input (When Available)-->
-				<!-- <li onclick="$('.custom_script').css('display', 'initial'); $('.wrap').css('display', 'initial');">Custom</li> -->
-				
-			</ul>
-		</div>
 
+		<!-- portion of screen used for displaying box count / commands -->
 		<div class='display'>
+			<!-- boxes hold dots, INC/DEC buttons -->
+			<!-- are ten boxes, 0-9 -->
 			<ul id='boxes'>
 				<li id="box0">
 					<p id='box_num'>0</p>
@@ -407,11 +408,13 @@
 					<button class='deb'>-</button>
 				</li>
 			</ul>
+
+			<!-- container to display commands / animate as program runs -->
 			<div class='cmd_display'>
-	
 			</div>
 		</div>
 		
+		<!-- box for user input / buttons to control commands / program -->
 		<div class='input'>
 			<div class='button_holder'>
 				<button id='play_btn'>Play</button>
