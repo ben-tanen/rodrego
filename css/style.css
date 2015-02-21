@@ -17,6 +17,7 @@ a {
 	color: white;
 	height: 80px;
 	text-align: center;
+	padding-top: 5px;
 }
 
 .header a {
@@ -48,6 +49,7 @@ a {
 .options {
 	width: 200px;
 	padding: 5px;
+	display: none;
 }
 
 .options ul {
