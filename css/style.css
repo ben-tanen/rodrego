@@ -185,6 +185,14 @@ table {
 	border-bottom-right-radius: 15px;
 }
 
+button:hover {
+	cursor: pointer;
+}
+
+button:focus {
+    outline: none;
+}
+
 .cmd_display {
 	position: absolute;
 	top: 0;
