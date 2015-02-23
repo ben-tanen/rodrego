@@ -22,8 +22,7 @@ Round 2:
 	- [ ] Improve layout of options (make more clear)
 	- [ ] Give options visual queues / icons
 	- [ ] Auto close modal if example script selected
-
-
+- [ ] Add "By Dan Dennett etc." to page
 
 Round 1:
 - [x] Improve UI/UX
