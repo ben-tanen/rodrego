@@ -15,7 +15,7 @@ a {
 
 .header {
 	color: white;
-	height: 80px;
+	height: 50px;
 	text-align: center;
 	padding-top: 5px;
 }
@@ -97,18 +97,18 @@ a {
 	right: 10px;
 }
 
-.user_guide {
-/*	background-color: gray;
-	padding: 15px;
-	border-radius: 5px;
-	z-index: 10;
-	left: 50%;
-	top: 50%;
-	margin-top: -280px;
-    margin-left: -250px;
-*/    
+.user_guide {   
 	display: none;
 	color: black;
+}
+
+.user_guide a {
+	color: #176efd;
+	text-decoration: none;
+}
+
+.user_guide code {
+	color: #ca2218;
 }
 
 .display {
@@ -185,7 +185,7 @@ table {
 	border-bottom-right-radius: 15px;
 }
 
-button:hover {
+#options_button, #guide_button, button:hover {
 	cursor: pointer;
 }
 
@@ -207,6 +207,7 @@ button:focus {
 	position: relative;
 	top: 8px;
 	left: 10px;
+	width: 50px;
 }
 
 .cmd_output_line_b {
