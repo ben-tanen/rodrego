@@ -289,6 +289,10 @@ function runCommands(cmds,i,step) {
 	if (cmds[i]['cmd'] != 'end') {
 		$('.cmd_output_line').css('color', 'white');
 		$('.cmd_output_line:nth-child('+(i+1)+')').css('color', 'yellow');
+
+		// highlights box number of currently updating box
+		$('#boxes li #box_num').css('color', 'red');
+		$('#boxes li:nth-of-type(' + (cmds[i]['box'] + 1) + ') #box_num').css('color', 'yellow');
 		next_command = 0;
 
 		if (cmds[i]['cmd'] == 'inc') {
@@ -394,6 +398,9 @@ $(document).ready(function() {
 		if (boxVal[box_num] < max_limit) {
 			boxVal[box_num]++;
 			updateScreen();
+			if (!soundOff) {
+				document.getElementById('beep').play();
+			}
 		}
 	});
 
@@ -402,6 +409,13 @@ $(document).ready(function() {
 		if (boxVal[box_num] > 0) {
 			boxVal[box_num]--;
 			updateScreen();
+			if (!soundOff) {
+				document.getElementById('bleep').play();
+			}
+		} else {
+			if (!soundOff) {
+				document.getElementById('fail').play();
+			}
 		}
 	});
 
