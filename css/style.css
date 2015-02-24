@@ -160,6 +160,7 @@ table {
 	height: 10px;
 	border-radius: 10px;
 	margin: 1px 0 0 1px;
+	cursor: pointer;
 }
 
 #boxes li button {
@@ -280,5 +281,18 @@ button:focus {
 	height: 425px;
 	font-size: 15px;
 	padding: 5px;
+}
+
+#footer {
+	color: white;
+	font-size: 9px;
+	margin: auto;
+	margin-top: 5px;
+	width: 680px;
+	text-align: right;
+}
+
+#footer a {
+	color: white;
 }
 

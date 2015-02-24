@@ -391,6 +391,25 @@ $(document).ready(function() {
 		outside: 'x'
 	});
 
+	$('.dot').click(function() {
+		// find location of dot that was clicked
+		// column in row of 5 dots
+		var dot_col = $(this).parent().index();
+
+		// row in table of 3 rows
+		var dot_row = $(this).parent().parent().index();
+
+		// box number of 10 boxes
+		var box_num = $(this).parent().parent().parent().parent().parent().parent().index();
+
+		// calculate the value connected to dot that was clicked
+		var box_value = ((2 - dot_row) * 5) + (5 - dot_col);
+
+		// change value and update screen
+		boxVal[box_num] = box_value;
+		updateScreen();
+	});
+
 	// map 'inc' & 'deb' buttons to edit their particular box
 	// finding the box number and just incrementing / decrementing
 	$('.inc').click(function() {

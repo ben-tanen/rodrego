@@ -16,8 +16,8 @@ For more information about the original project, [click here](http://sites.tufts
 Round 2:
 - [x] Register Highlighting for Active Box
 - [x] Add Sound for INC/DEB buttons
+- [x] Add Clickable Dots (able for count to jump to corresponding value)
 - [ ] Fix Safari Sound Problem
-- [ ] Add Clickable Dots (able for count to jump to corresponding value)
 - [ ] Adjust Options Layout to work with jBox Modal view
 	- [ ] Improve layout of options (make more clear)
 	- [ ] Give options visual queues / icons
