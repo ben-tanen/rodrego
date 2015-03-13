@@ -47,24 +47,46 @@ a {
 }
 
 .options {
-	width: 200px;
-	padding: 5px;
 	display: none;
 }
 
-.options ul {
-	list-style: none;
+.options-box {
+	cursor: pointer;
+	width: 133px;
+	height: 70px;
+	margin: 3px;
+	display: inline-block;
+	text-align: center;
+
+	background-color: #E4E4E4;
+	border-radius: 2px;
 }
 
-.options li:hover, .options p:hover {
+.options-box#scripts {
+	margin-top: 5px;
+	width: 420px;
+	height: auto;
+	padding: 5px 0 5px 0;
+}
+
+.options-box#scripts p:not(:first-of-type):hover {
 	text-decoration: underline;
-	cursor: pointer;
 }
 
 #runScriptTitle {
 	text-decoration: none;
+	font-weight: bold;
 	cursor: default;
 }
+
+.options img {
+	margin-top: 8px;
+	width: 30px;
+}
+
+
+
+
 
 .custom_script {
 	position: absolute;

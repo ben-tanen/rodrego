@@ -16,13 +16,6 @@
 </head>
 
 <body>
-	<!-- popup window for customscript input (currently disabled) -->
-	<div class='custom_script'>
-		<p>Choose a script file to run (in <code>.txt</code> format)</p>
-		<input type='file' />
-		<input onclick='customScript(100)' type='submit' value='Submit'/>
-	</div>
-
 	<!-- Popup for User Guide (used by jBox js to make modal popup) -->
 	<div class='user_guide'>
 		<p>RodRego is a simple register machine simulator illustrating the computational capabilities of the INC/DEB language model. By inputting different commands, you can increment and decrement the ten registers (or boxes) to simulate different computations.</p>
@@ -57,20 +50,29 @@
 
 	<!-- Popup for Options (used by jBox js to make modal popup) -->
 	<div class='options'>
-		<p onclick="changeSpeed();">Change Speed</p>
-		<p id='showNum' onclick='toggleShowNum();'>Show Box Count</p>
-		<p onclick='changeSound();'>Sound Off</p>
-		<p id='runScriptTitle'>Run Script:</p>
-		<ul style='list-style: disc; position: relative; left: 20px;'>
-			<li onclick="customScript('simple')">Simple</li>
-			<li onclick="customScript('add')">Addition</li>
-			<li onclick="customScript('sub')">Subtraction</li>
-			<li onclick="customScript('mul')">Multiplication</li>
-			<li onclick="customScript('extended')">Extended</li>
-			<!-- CustomScript Input (When Available)-->
-			<!-- <li onclick="$('.custom_script').css('display', 'initial'); $('.wrap').css('display', 'initial');">Custom</li> -->
-			
-		</ul>
+		<div class='options-box' onclick="changeSpeed();">
+			<img src='img/speed.svg' />
+			<p>Change Speed</p>
+		</div>
+		
+		<div class="options-box" onclick='toggleShowNum();'>
+			<img src='img/box_count.svg' />
+			<p id='showNum'>Show Box Count</p>	
+		</div>
+
+		<div class="options-box" onclick='changeSound();'>
+			<img src='img/speaker_on.svg' />
+			<p id='soundText'>Turn Sound Off</p>
+		</div>
+
+		<div class='options-box' id='scripts'>
+			<p id='runScriptTitle'>Run Example Scripts</p>
+			<p onclick="customScript('simple')">Simple</p>
+			<p onclick="customScript('add')">Addition</p>
+			<p onclick="customScript('sub')">Subtraction</p>
+			<p onclick="customScript('mul')">Multiplication</p>
+			<p onclick="customScript('extended')">Extended</p>
+		</div>
 	</div>
 
 	<div class='header'>

@@ -83,10 +83,12 @@ function changeSpeed() {
 function changeSound() {
 	if (soundOff) {
 		soundOff = false;
-		$('.options p:nth-child(3)').text('Sound Off');
+		$('.options #soundText').text('Turn Sound Off');
+		$('.options #soundText').siblings().attr("src", "img/speaker_on.svg");
 	} else {
 		soundOff = true;
-		$('.options p:nth-child(3)').text('Sound On');
+		$('.options #soundText').text('Turn Sound On');
+		$('.options #soundText').siblings().attr("src", "img/speaker_off.svg");
 	}
 
 }
@@ -364,7 +366,7 @@ $(document).ready(function() {
 
 	options_popup = new jBox('Modal',{
 		attach: $('#options_button'),
-		width: 230 ,
+		width: 458 ,
 		height: 250,
 		title: "Options",
 		content: $('.options')
