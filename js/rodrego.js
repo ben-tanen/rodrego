@@ -7,6 +7,25 @@ var soundOff = false;
 var showNum = false;
 var reset = false;
 
+var thisBeep = 0;
+var thisBleep = 0;
+
+var beeps = [
+	new Audio("sound/sound0.mp3"), 
+	new Audio("sound/sound0.mp3"),
+	new Audio("sound/sound0.mp3"), 
+	new Audio("sound/sound0.mp3"), 
+	new Audio("sound/sound0.mp3"), 
+	new Audio("sound/sound0.mp3")];
+
+var bleeps = [
+	new Audio("sound/sound1.mp3"), 
+	new Audio("sound/sound1.mp3"),
+	new Audio("sound/sound1.mp3"), 
+	new Audio("sound/sound1.mp3"), 
+	new Audio("sound/sound1.mp3"), 
+	new Audio("sound/sound1.mp3")];
+
 // initalize boxValues / adjust for beginning of program
 function initalize() {
 	$("#reset_btn").prop("disabled",true);
@@ -282,12 +301,19 @@ function printCommands(cmds) {
 	$('.cmd_display').html(cmd_str);
 }
 
-function runCommands(cmds,i,step) {
-	document.getElementById('beep').pause();
-	document.getElementById('beep').currentTime = 0;
-	document.getElementById('bleep').pause();
-	document.getElementById('bleep').currentTime = 0;
+function playBeep() {  
+	beeps[thisBeep].play();
+	thisBeep++;
+	if (thisBeep > 5) thisBeep = 0;
+}
 
+function playBleep() {  
+	bleeps[thisBleep].play();
+	thisBleep++;
+	if (thisBleep > 5) thisBleep = 0;
+}
+
+function runCommands(cmds,i,step) {
 	if (cmds[i]['cmd'] != 'end') {
 		$('.cmd_output_line').css('color', 'white');
 		$('.cmd_output_line:nth-child('+(i+1)+')').css('color', 'yellow');
@@ -300,7 +326,7 @@ function runCommands(cmds,i,step) {
 		if (cmds[i]['cmd'] == 'inc') {
 			boxVal[cmds[i]['box']]++;
 			if (!soundOff) {
-				document.getElementById('beep').play();
+				playBeep();
 			}
 			next_command = cmds[i]['nxt_cmd'];
 			
@@ -309,7 +335,7 @@ function runCommands(cmds,i,step) {
 				boxVal[cmds[i]['box']]--;
 				next_command = cmds[i]['nxt_cmd'];
 				if (!soundOff) {
-					document.getElementById('bleep').play();
+					playBleep();
 				}
 			} else {
 				if (!soundOff) {
@@ -420,7 +446,7 @@ $(document).ready(function() {
 			boxVal[box_num]++;
 			updateScreen();
 			if (!soundOff) {
-				document.getElementById('beep').play();
+				playBeep();
 			}
 		}
 	});
@@ -431,7 +457,7 @@ $(document).ready(function() {
 			boxVal[box_num]--;
 			updateScreen();
 			if (!soundOff) {
-				document.getElementById('bleep').play();
+				playBleep();
 			}
 		} else {
 			if (!soundOff) {
