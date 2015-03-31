@@ -18,11 +18,11 @@ Round 2:
 - [x] Add Sound for INC/DEB buttons
 - [x] Add Clickable Dots (able for count to jump to corresponding value)
 - [x] Add "By Dan Dennett etc." to page
-- [ ] Fix Safari Sound Problem
-- [ ] Adjust Options Layout to work with jBox Modal view
-	- [ ] Improve layout of options (make more clear)
-	- [ ] Give options visual queues / icons
-	- [ ] Auto close modal if example script selected
+- [x] Fix Safari Sound Problem
+- [x] Adjust Options Layout to work with jBox Modal view
+	- [x] Improve layout of options (make more clear)
+	- [x] Give options visual queues / icons
+	- [x] Auto close modal if example script selected
 
 Round 1:
 - [x] Improve UI/UX
