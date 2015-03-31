@@ -7,9 +7,10 @@ var soundOff = false;
 var showNum = false;
 var reset = false;
 
+// used to make sound
+// (multiple beep/bleep sounds used to make sure no overlap in playing sound)
 var thisBeep = 0;
 var thisBleep = 0;
-
 var beeps = [
 	new Audio("sound/sound0.mp3"), 
 	new Audio("sound/sound0.mp3"),
@@ -28,7 +29,10 @@ var bleeps = [
 
 // initalize boxValues / adjust for beginning of program
 function initalize() {
+	// lock reset button
 	$("#reset_btn").prop("disabled",true);
+
+	// set initial values of boxes
 	for (i=0;i<10;i++){
 		boxVal[i] = i;	
 	}
@@ -62,25 +66,38 @@ function toggleShowNum() {
 	}
 }
 
+// function used to update values displayed for boxes
 function updateScreen() {
+	// loops through all 10 boxes
 	for (var i=0;i<10;i++){
+		// update the string number value
 		$('#boxes li:nth-child('+(i+1)+') .value_num').text(boxVal[i]);
+
+		// if boxVal is over cap -> automatically display value as string
 		if (boxVal[i] > 15) {
 			$('#boxes li:nth-child('+(i+1)+') .value_num').css({'visibility': 'visible'});
 			$('#boxes li:nth-child('+(i+1)+') table').css({'visibility': 'hidden'});
+
+		// if value can be displayed as dots, display as dots
 		} else if (!showNum && boxVal[i] <= 15) {
 			$('#boxes li:nth-child('+(i+1)+') .value_num').css({'visibility': 'hidden'});
 			$('#boxes li:nth-child('+(i+1)+') table').css({'visibility': 'visible'});
 		}
+
 		updateDots(i);
 	}
 }
 
+// update display dots
 function updateDots(box_num) {
+	// for each dot of a particular box
 	for (var i=15;i>0;i--){
+		// calculate row, column, and get dot
 		var row = (Math.ceil(i/5));
 		var col = (i - 5*(Math.ceil(i/5) - 1));
 		var dot = $('#boxes li:nth-child('+(box_num+1)+') tr:nth-child('+row+') td:nth-child('+col+') .dot');
+
+		// turn on or turn off dot, depending on boxVal
 		if (boxVal[box_num] >= 16 - i) {
 			dot.css('background-color', 'red');
 		} else {
@@ -93,12 +110,11 @@ function updateDots(box_num) {
 function changeSpeed() {
 	var result = prompt("Enter a new speed (in ms between 100 and 100,000)",  cmdSpeed);
  
-	if (result != null && !isNaN(result) && result >= 100 && result <= 100000) {
-        	cmdSpeed = parseInt(result);
-    	}
+	if (result != null && !isNaN(result) && result >= 100 && result <= 100000)
+        cmdSpeed = parseInt(result);
 }
 
-// turn off or on sound
+// turn off or on sound (& update option icon)
 function changeSound() {
 	if (soundOff) {
 		soundOff = false;
@@ -129,7 +145,9 @@ function customScript(script_type) {
 	} else {
 		cmd_string = '# custom script here';
 	}
+
 	$('#cmd_input').val(cmd_string);
+	options_popup.close();
 }
 
 // function to parse command lines, returning command / arguments as object
@@ -301,6 +319,7 @@ function printCommands(cmds) {
 	$('.cmd_display').html(cmd_str);
 }
 
+// play the beep / bleep sounds
 function playBeep() {  
 	beeps[thisBeep].play();
 	thisBeep++;
