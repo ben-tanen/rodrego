@@ -1,211 +1,211 @@
 * {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-	padding: 0 0 0 10px;
-	font-family: 'Avenir';
-	background-color: black;
+    padding: 0 0 0 10px;
+    font-family: 'Avenir';
+    background-color: black;
 }
 
 a {
-	text-decoration: underline;
+    text-decoration: underline;
 }
 
 .header {
-	color: white;
-	height: 50px;
-	text-align: center;
-	padding-top: 5px;
+    color: white;
+    height: 50px;
+    text-align: center;
+    padding-top: 5px;
 }
 
 .header a {
-	color: white;
+    color: white;
 }
 
 .main {
-	position: relative;
-	width: 658px;
-	margin: auto;
-	border: 1px white solid;
-	padding: 10px 10px 10px 10px;
+    position: relative;
+    width: 658px;
+    margin: auto;
+    border: 1px white solid;
+    padding: 10px 10px 10px 10px;
 }
 
 #guide_button {
-	width: 20px;
-	position: absolute;
-	top: 0px;
-	right: -25px;
+    width: 20px;
+    position: absolute;
+    top: 0px;
+    right: -25px;
 }
 
 #options_button {
-	width: 20px;
-	position: absolute;
-	top: 23px;
-	right: -25px;
+    width: 20px;
+    position: absolute;
+    top: 23px;
+    right: -25px;
 }
 
 .options {
-	display: none;
+    display: none;
 }
 
 .options-box {
-	cursor: pointer;
-	width: 133px;
-	height: 70px;
-	margin: 3px;
-	display: inline-block;
-	text-align: center;
+    cursor: pointer;
+    width: 133px;
+    height: 70px;
+    margin: 3px;
+    display: inline-block;
+    text-align: center;
 
-	background-color: #E4E4E4;
-	border-radius: 2px;
+    background-color: #E4E4E4;
+    border-radius: 2px;
 }
 
 .options-box#scripts {
-	margin-top: 5px;
-	width: 420px;
-	height: auto;
-	padding: 5px 0 5px 0;
+    margin-top: 5px;
+    width: 420px;
+    height: auto;
+    padding: 5px 0 5px 0;
 }
 
 .options-box#scripts p:not(:first-of-type):hover {
-	text-decoration: underline;
+    text-decoration: underline;
 }
 
 #runScriptTitle {
-	text-decoration: none;
-	font-weight: bold;
-	cursor: default;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: default;
 }
 
 .options img {
-	margin-top: 8px;
-	width: 30px;
+    margin-top: 8px;
+    width: 30px;
 }
 
 .custom_script {
-	position: absolute;
-	width: 300px;
-	height: 60px;
-	background-color: gray;
-	padding: 10px;
-	border-radius: 5px;
-	z-index: 10;
-	top: 50%;
-	left: 50%;
-	margin-top: -30px;
+    position: absolute;
+    width: 300px;
+    height: 60px;
+    background-color: gray;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    margin-top: -30px;
     margin-left: -150px;
     display: none;
 }
 
 .custom_script p {
-	text-align: center;
+    text-align: center;
 }
 
 .custom_script input[type='file'] {
-	position: absolute;
-	bottom: 10px;
-	left: 10px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
 }
 
 .custom_script input[type='submit'] {
-	position: absolute;
-	bottom: 10px;
-	right: 10px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
 }
 
 .user_guide {   
-	display: none;
-	color: black;
+    display: none;
+    color: black;
 }
 
 .user_guide a {
-	color: #176efd;
-	text-decoration: none;
+    color: #176efd;
+    text-decoration: none;
 }
 
 .user_guide code {
-	color: #ca2218;
+    color: #ca2218;
 }
 
 .display {
-	position: relative;
-	width: 325px;
+    position: relative;
+    width: 325px;
 }
 
 #boxes li {
-	position: relative;
-	width: 122px;
-	height: 48px;
-	border: 1px white solid;
-	border-bottom: none;
-	list-style: none;
+    position: relative;
+    width: 122px;
+    height: 48px;
+    border: 1px white solid;
+    border-bottom: none;
+    list-style: none;
 }
 
 #boxes li:nth-child(10) {
-	border-bottom: 1px solid white;
+    border-bottom: 1px solid white;
 }
 
 #box_num {
-	position: absolute;
-	top: 11px;
-	margin-left: 7px;
-	color: red;
-	font-size: 20px;
-	font-family: 'Avenir';
+    position: absolute;
+    top: 11px;
+    margin-left: 7px;
+    color: red;
+    font-size: 20px;
+    font-family: 'Avenir';
 }
 
 table {
-	margin: 3px 0 0 25px;
-	padding: 0;
+    margin: 3px 0 0 25px;
+    padding: 0;
 }
 
 .value_num {
-	color: white;
-	position: absolute;
-	font-size: 23px;
-	top: 9px;
-	left: 28px;
-	width: 62px;
-	text-align: center;
-	visibility: hidden;
+    color: white;
+    position: absolute;
+    font-size: 23px;
+    top: 9px;
+    left: 28px;
+    width: 62px;
+    text-align: center;
+    visibility: hidden;
 }
 
 .dot {
-	background-color: #711111;
-	width: 10px;
-	height: 10px;
-	border-radius: 10px;
-	margin: 1px 0 0 1px;
-	cursor: pointer;
+    background-color: #711111;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    margin: 1px 0 0 1px;
+    cursor: pointer;
 }
 
 #boxes li button {
-	position: absolute;
-	left: 95px;
-	width: 20px;
-	height: 20px;
-	background-color: black;
-	border: 1px white solid;
-	color: white;
-	font-size: 15px;
+    position: absolute;
+    left: 95px;
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border: 1px white solid;
+    color: white;
+    font-size: 15px;
 }
 
 .inc {
-	top: 3px;
-	border-top-left-radius: 20px;
-	border-top-right-radius: 20px;
+    top: 3px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 .deb {
-	top: 24px;
-	border-bottom-left-radius: 15px;
-	border-bottom-right-radius: 15px;
+    top: 24px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 #options_button, #guide_button, button:hover {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 button:focus {
@@ -213,104 +213,104 @@ button:focus {
 }
 
 .cmd_display {
-	position: absolute;
-	top: 0;
-	right: 11px;
-	width: 180px;
-	height: 100%;
-	border: 1px solid white;
-	overflow: auto;
+    position: absolute;
+    top: 0;
+    right: 11px;
+    width: 180px;
+    height: 489px;
+    border: 1px solid white;
+    overflow: auto;
 }
 
 .cmd_output_line {
-	position: relative;
-	top: 8px;
-	left: 10px;
-	width: 50px;
+    position: relative;
+    top: 8px;
+    left: 10px;
+    width: 50px;
 }
 
 .cmd_output_line_b {
-	position: absolute;
-	left: 25px;
+    position: absolute;
+    left: 25px;
 }
 
 .cmd_output_line_c {
-	position: absolute;
-	left: 75px;
+    position: absolute;
+    left: 75px;
 }
 
 .cmd_output_line_d {
-	position: absolute;
-	left: 110px;
+    position: absolute;
+    left: 110px;
 }
 
 .cmd_output_line_e {
-	position: absolute;
-	left: 145px;
+    position: absolute;
+    left: 145px;
 }
 
 #fail_msg {
-	text-align: center;
-	color: red;
-	margin: auto;
-	margin-top: 10px;
-	width: 160px;
+    text-align: center;
+    color: red;
+    margin: auto;
+    margin-top: 10px;
+    width: 160px;
 }
 
 .input {
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	border: 1px solid white;
-	width: 333px;
-	height: 490px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: 1px solid white;
+    width: 333px;
+    height: 489px;
 }
 
 .input button {
-	position: absolute;
-	bottom: 5px;
-	width: 100px;
-	height: 30px;
-	font-size: 15px;
-	border-radius: 5px;
-	background-color: black;
-	color: white;
-	border: 2px solid #474747;
-	border-top: 2px solid white;
-	border-left: 2px solid white;
+    position: absolute;
+    bottom: 5px;
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    border: 2px solid #474747;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
 }
 
 #play_btn {
-	left: 12px;
+    left: 12px;
 }
 
 #reset_btn {
-	left: 118px;
+    left: 118px;
 }
 
 #step_btn {
-	left: 223px;
+    left: 223px;
 }
 
 #cmd_input {
-	resize: none;
-	margin: 10px 0 0 13px;
-	width: 297px;
-	height: 425px;
-	font-size: 15px;
-	padding: 5px;
+    resize: none;
+    margin: 10px 0 0 13px;
+    width: 297px;
+    height: 425px;
+    font-size: 15px;
+    padding: 5px;
 }
 
 #footer {
-	color: white;
-	font-size: 9px;
-	margin: auto;
-	margin-top: 5px;
-	width: 680px;
-	text-align: right;
+    color: white;
+    font-size: 9px;
+    margin: auto;
+    margin-top: 5px;
+    width: 680px;
+    text-align: right;
 }
 
 #footer a {
-	color: white;
+    color: white;
 }
 

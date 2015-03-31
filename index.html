@@ -1,433 +1,422 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>RodRego</title>
-	<link rel="icon" type="image/png" href="img/rodrego_icon.jpg">
+    <meta charset="UTF-8">
+    <title>RodRego</title>
+    <link rel="icon" type="image/png" href="img/rodrego_icon.jpg">
 
-	<!-- custom css & css provided by jBox -->
-	<link rel="stylesheet" href="css/jBox.css">
-	<link rel="stylesheet" href="css/style.css">
-	
-	<!-- jQuery, custom JS, & jBox (for pop-ups) -->
-	<script src="js/lib/jquery.min.js"></script>
-	<script src="js/lib/jBox.min.js"></script>
-	<script src="js/rodrego.js"></script>
+    <!-- custom css & css provided by jBox -->
+    <link rel="stylesheet" href="css/jBox.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- jQuery, custom JS, & jBox (for pop-ups) -->
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/jBox.min.js"></script>
+    <script src="js/rodrego.js"></script>
 </head>
 
 <body>
-	<!-- Popup for User Guide (used by jBox js to make modal popup) -->
-	<div class='user_guide'>
-		<p>RodRego is a simple register machine simulator illustrating the computational capabilities of the INC/DEB language model. By inputting different commands, you can increment and decrement the ten registers (or boxes) to simulate different computations.</p>
-		<br />
-		<p>There are three different commands available: INC, DEB, and END</p>
-		<br />
-		<p>You can use INC to increment a particular register by one. The syntax for the INC command is:</p>
-		<pre><code>[step] INC [register] [go to step]</code></pre>
-		<br />
-		<p>You can use DEB to decrement a particular register by one. The syntax for the DEB command is:</p>
-		<pre><code>[step] DEB [register] [go to step] [go to step if already empty]</code></pre> 
-		<br /> 
-		<p>Finally, you can use the END command to end a script from running.</p>
-		<br />
-		<p>An example script might look like:</p>
-		<pre><code>1 INC 2 2    # Increment 2nd register</code></pre>
-		<pre><code>2 DEB 3 2 3  # Decrement 3rd register and repeat until empty</code></pre>
-		<pre><code>3 END        # End program</code></pre>
-		<br />
-		<p>As you can see, you can comment a line of your script by using '#'. Anything after a '#'' will be ignored.</p>
-		<br />
-		<p>The order and number of your steps also don't matter, as long as they begin on step #1 and create a full stream (you can go from one to the other). For example, you could have the following script:</p>
-		<pre><code>1  INC 2 8      # Increment 2nd register, go to step 8</code></pre>
-		<pre><code>98 DEB 5 42 42  # Decrement 5th register, go to step 42</code></pre>
-		<pre><code>42 END          # End program</code></pre>
-		<pre><code>8  INC 3 98     # Increment 3rd register, go to step 98</code></pre>
-		<br />
-		<p>For example scripts, try out the included samples. For more information about RodRego and register machines, read <a href='#'>"Secrets of Computer Power Revealed”</a>. If you read through it, and do the exercises, you will be a master of register machines in no time.</p>
-		<br />
-		<p>If you would like to know more abot the project, visit <a href='http://sites.tufts.edu/rodrego/'>the original Tufts Site</a>.</p>
-	</div>
+    <!-- Popup for User Guide (used by jBox js to make modal popup) -->
+    <div class='user_guide'>
+        <p>RodRego is a simple register machine simulator illustrating the computational capabilities of the INC/DEB language model. By inputting different commands, you can increment and decrement the ten registers (or boxes) to simulate different computations.</p>
+        <br />
+        <p>There are three different commands available: INC, DEB, and END</p>
+        <br />
+        <p>You can use INC to increment a particular register by one. The syntax for the INC command is:</p>
+        <pre><code>[step] INC [register] [go to step]</code></pre>
+        <br />
+        <p>You can use DEB to decrement a particular register by one. The syntax for the DEB command is:</p>
+        <pre><code>[step] DEB [register] [go to step] [go to step if already empty]</code></pre> 
+        <br /> 
+        <p>Finally, you can use the END command to end a script from running.</p>
+        <br />
+        <p>An example script might look like:</p>
+        <pre><code>1 INC 2 2    # Increment 2nd register</code></pre>
+        <pre><code>2 DEB 3 2 3  # Decrement 3rd register and repeat until empty</code></pre>
+        <pre><code>3 END        # End program</code></pre>
+        <br />
+        <p>As you can see, you can comment a line of your script by using '#'. Anything after a '#'' will be ignored.</p>
+        <br />
+        <p>The order and number of your steps also don't matter, as long as they begin on step #1 and create a full stream (you can go from one to the other). For example, you could have the following script:</p>
+        <pre><code>1  INC 2 8      # Increment 2nd register, go to step 8</code></pre>
+        <pre><code>98 DEB 5 42 42  # Decrement 5th register, go to step 42</code></pre>
+        <pre><code>42 END          # End program</code></pre>
+        <pre><code>8  INC 3 98     # Increment 3rd register, go to step 98</code></pre>
+        <br />
+        <p>For example scripts, try out the included samples. For more information about RodRego and register machines, read <a href='#'>"Secrets of Computer Power Revealed”</a>. If you read through it, and do the exercises, you will be a master of register machines in no time.</p>
+        <br />
+        <p>If you would like to know more abot the project, visit <a href='http://sites.tufts.edu/rodrego/'>the original Tufts Site</a>.</p>
+    </div>
 
-	<!-- Popup for Options (used by jBox js to make modal popup) -->
-	<div class='options'>
-		<div class='options-box' onclick="changeSpeed();">
-			<img src='img/speed.svg' />
-			<p>Change Speed</p>
-		</div>
-		
-		<div class="options-box" onclick='toggleShowNum();'>
-			<img src='img/box_count.svg' />
-			<p id='showNum'>Show Box Count</p>	
-		</div>
+    <!-- Popup for Options (used by jBox js to make modal popup) -->
+    <div class='options'>
+        <div class='options-box' onclick="changeSpeed();">
+            <img src='img/speed.svg' />
+            <p>Change Speed</p>
+        </div>
+        
+        <div class="options-box" onclick='toggleShowNum();'>
+            <img src='img/box_count.svg' />
+            <p id='showNum'>Show Box Count</p>    
+        </div>
 
-		<div class="options-box" onclick='changeSound();'>
-			<img src='img/speaker_on.svg' />
-			<p id='soundText'>Turn Sound Off</p>
-		</div>
+        <div class="options-box" onclick='changeSound();'>
+            <img src='img/speaker_on.svg' />
+            <p id='soundText'>Turn Sound Off</p>
+        </div>
 
-		<div class='options-box' id='scripts'>
-			<p id='runScriptTitle'>Run Example Scripts</p>
-			<p onclick="customScript('simple')">Simple</p>
-			<p onclick="customScript('add')">Addition</p>
-			<p onclick="customScript('sub')">Subtraction</p>
-			<p onclick="customScript('mul')">Multiplication</p>
-			<p onclick="customScript('extended')">Extended</p>
-		</div>
-	</div>
+        <div class='options-box' id='scripts'>
+            <p id='runScriptTitle'>Run Example Scripts</p>
+            <p onclick="customScript('simple')">Simple</p>
+            <p onclick="customScript('add')">Addition</p>
+            <p onclick="customScript('sub')">Subtraction</p>
+            <p onclick="customScript('mul')">Multiplication</p>
+            <p onclick="customScript('extended')">Extended</p>
+        </div>
+    </div>
 
-	<div class='header'>
-		<h1 id='title'>RodRego</h1>
-	</div>
+    <div class='header'>
+        <h1 id='title'>RodRego</h1>
+    </div>
 
-	<!-- Sounds used throughout the operation
-		 - Success = when code was successfully run / finished
-		 - Fail    = when code failed because of input error or if box hits 0
-		 - Beep    = when there is an increment
-		 - Bleep   = when there is a decrement -->
-	<audio id='success'><source src="sound/sound3.mp3"></audio>
-	<audio id='fail'><source src="sound/sound2.mp3"></audio>
-	<audio id='beep'><source src="sound/sound0.mp3"></audio>
-	<audio id='bleep'><source src="sound/sound1.mp3"></audio>
+    <div class='main'>
+        <!-- Buttons used to turn on guide and options pop-ups -->
+        <img id='guide_button' src='img/guide2.png' />
+        <img id='options_button' src='img/gears2.png' />
 
+        <!-- portion of screen used for displaying box count / commands -->
+        <div class='display'>
+            <!-- boxes hold dots, INC/DEC buttons -->
+            <!-- are ten boxes, 0-9 -->
+            <ul id='boxes'>
+                <li id="box0">
+                    <p id='box_num'>0</p>
+                    <div class='value'>
+                        <p class='value_num'>0</p>
+                        <table>
+                        <tr>
+                            <td><div id='on' class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                        </tr>
+                        </table>
+                    </div>
+                    <button class='inc'>+</button>
+                    <button class='deb'>-</button>
+                </li>
+                <li id="box1">
+                    <p id='box_num'>1</p>
+                    <div class='value'>
+                        <p class='value_num'>1</p>
+                        <table>
+                        <tr>
+                            <td><div id='on' class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                        </tr>
+                        </table>
+                    </div>
+                    <button class='inc'>+</button>
+                    <button class='deb'>-</button>
+                </li>
+                <li id="box2">
+                    <p id='box_num'>2</p>
+                    <div class='value'>
+                        <p class='value_num'>2</p>
+                        <table>
+                        <tr>
+                            <td><div id='on' class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                        </tr>
+                        </table>
+                    </div>
+                    <button class='inc'>+</button>
+                    <button class='deb'>-</button>
+                </li>
+                <li id="box3">
+                    <p id='box_num'>3</p>
+                    <div class='value'>
+                        <p class='value_num'>0</p>
+                        <table>
+                        <tr>
+                            <td><div id='on' class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                        </tr>
+                        </table>
+                    </div>
+                    <button class='inc'>+</button>
+                    <button class='deb'>-</button>
+                </li>
+                <li id="box4">
+                    <p id='box_num'>4</p>
+                    <div class='value'>
+                        <p class='value_num'>0</p>
+                        <table>
+                        <tr>
+                            <td><div id='on' class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                        </tr>
+                        </table>
+                    </div>
+                    <button class='inc'>+</button>
+                    <button class='deb'>-</button>
+                </li>
+                <li id="box5">
+                    <p id='box_num'>5</p>
+                    <div class='value'>
+                        <p class='value_num'>0</p>
+                        <table>
+                        <tr>
+                            <td><div id='on' class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                        </tr>
+                        </table>
+                    </div>
+                    <button class='inc'>+</button>
+                    <button class='deb'>-</button>
+                </li>
+                <li id="box6">
+                    <p id='box_num'>6</p>
+                    <div class='value'>
+                        <p class='value_num'>0</p>
+                        <table>
+                        <tr>
+                            <td><div id='on' class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                        </tr>
+                        </table>
+                    </div>
+                    <button class='inc'>+</button>
+                    <button class='deb'>-</button>
+                </li>
+                <li id="box7">
+                    <p id='box_num'>7</p>
+                    <div class='value'>
+                        <p class='value_num'>0</p>
+                        <table>
+                        <tr>
+                            <td><div id='on' class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                        </tr>
+                        </table>
+                    </div>
+                    <button class='inc'>+</button>
+                    <button class='deb'>-</button>
+                </li>
+                <li id="box8">
+                    <p id='box_num'>8</p>
+                    <div class='value'>
+                        <p class='value_num'>0</p>
+                        <table>
+                        <tr>
+                            <td><div id='on' class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                        </tr>
+                        </table>
+                    </div>
+                    <button class='inc'>+</button>
+                    <button class='deb'>-</button>
+                </li>
+                <li id="box9">
+                    <p id='box_num'>9</p>
+                    <div class='value'>
+                        <p class='value_num'>0</p>
+                        <table>
+                        <tr>
+                            <td><div id='on' class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                            <td><div class='dot'></div></td>
+                        </tr>
+                        </table>
+                    </div>
+                    <button class='inc'>+</button>
+                    <button class='deb'>-</button>
+                </li>
+            </ul>
 
-	<div class='main'>
-		<!-- Buttons used to turn on guide and options pop-ups -->
-		<img id='guide_button' src='img/guide2.png' />
-		<img id='options_button' src='img/gears2.png' />
+            <!-- container to display commands / animate as program runs -->
+            <div class='cmd_display'>
+            </div>
+        </div>
+        
+        <!-- box for user input / buttons to control commands / program -->
+        <div class='input'>
+            <div class='button_holder'>
+                <button id='play_btn'>Play</button>
+                <button id='step_btn'>Step</button>
+                <button id='reset_btn'>Reset</button>
+            </div>
+            <textarea id='cmd_input' placeholder='Type Commands Here...'></textarea>
+        </div>
+    </div>
 
-		<!-- portion of screen used for displaying box count / commands -->
-		<div class='display'>
-			<!-- boxes hold dots, INC/DEC buttons -->
-			<!-- are ten boxes, 0-9 -->
-			<ul id='boxes'>
-				<li id="box0">
-					<p id='box_num'>0</p>
-					<div class='value'>
-						<p class='value_num'>0</p>
-						<table>
-						<tr>
-							<td><div id='on' class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-						</tr>
-						<tr>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-						</tr>
-						<tr>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-						</tr>
-						</table>
-					</div>
-					<button class='inc'>+</button>
-					<button class='deb'>-</button>
-				</li>
-				<li id="box1">
-					<p id='box_num'>1</p>
-					<div class='value'>
-						<p class='value_num'>1</p>
-						<table>
-						<tr>
-							<td><div id='on' class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-						</tr>
-						<tr>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-						</tr>
-						<tr>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-						</tr>
-						</table>
-					</div>
-					<button class='inc'>+</button>
-					<button class='deb'>-</button>
-				</li>
-				<li id="box2">
-					<p id='box_num'>2</p>
-					<div class='value'>
-						<p class='value_num'>2</p>
-						<table>
-						<tr>
-							<td><div id='on' class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-						</tr>
-						<tr>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-						</tr>
-						<tr>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-						</tr>
-						</table>
-					</div>
-					<button class='inc'>+</button>
-					<button class='deb'>-</button>
-				</li>
-				<li id="box3">
-					<p id='box_num'>3</p>
-					<div class='value'>
-						<p class='value_num'>0</p>
-						<table>
-						<tr>
-							<td><div id='on' class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-						</tr>
-						<tr>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-						</tr>
-						<tr>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-						</tr>
-						</table>
-					</div>
-					<button class='inc'>+</button>
-					<button class='deb'>-</button>
-				</li>
-				<li id="box4">
-					<p id='box_num'>4</p>
-					<div class='value'>
-						<p class='value_num'>0</p>
-						<table>
-						<tr>
-							<td><div id='on' class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-						</tr>
-						<tr>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-						</tr>
-						<tr>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-						</tr>
-						</table>
-					</div>
-					<button class='inc'>+</button>
-					<button class='deb'>-</button>
-				</li>
-				<li id="box5">
-					<p id='box_num'>5</p>
-					<div class='value'>
-						<p class='value_num'>0</p>
-						<table>
-						<tr>
-							<td><div id='on' class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-						</tr>
-						<tr>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-						</tr>
-						<tr>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-						</tr>
-						</table>
-					</div>
-					<button class='inc'>+</button>
-					<button class='deb'>-</button>
-				</li>
-				<li id="box6">
-					<p id='box_num'>6</p>
-					<div class='value'>
-						<p class='value_num'>0</p>
-						<table>
-						<tr>
-							<td><div id='on' class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-						</tr>
-						<tr>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-						</tr>
-						<tr>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-						</tr>
-						</table>
-					</div>
-					<button class='inc'>+</button>
-					<button class='deb'>-</button>
-				</li>
-				<li id="box7">
-					<p id='box_num'>7</p>
-					<div class='value'>
-						<p class='value_num'>0</p>
-						<table>
-						<tr>
-							<td><div id='on' class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-						</tr>
-						<tr>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-						</tr>
-						<tr>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-						</tr>
-						</table>
-					</div>
-					<button class='inc'>+</button>
-					<button class='deb'>-</button>
-				</li>
-				<li id="box8">
-					<p id='box_num'>8</p>
-					<div class='value'>
-						<p class='value_num'>0</p>
-						<table>
-						<tr>
-							<td><div id='on' class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-						</tr>
-						<tr>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-						</tr>
-						<tr>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-						</tr>
-						</table>
-					</div>
-					<button class='inc'>+</button>
-					<button class='deb'>-</button>
-				</li>
-				<li id="box9">
-					<p id='box_num'>9</p>
-					<div class='value'>
-						<p class='value_num'>0</p>
-						<table>
-						<tr>
-							<td><div id='on' class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-						</tr>
-						<tr>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-						</tr>
-						<tr>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-							<td><div class='dot'></div></td>
-						</tr>
-						</table>
-					</div>
-					<button class='inc'>+</button>
-					<button class='deb'>-</button>
-				</li>
-			</ul>
-
-			<!-- container to display commands / animate as program runs -->
-			<div class='cmd_display'>
-			</div>
-		</div>
-		
-		<!-- box for user input / buttons to control commands / program -->
-		<div class='input'>
-			<div class='button_holder'>
-				<button id='play_btn'>Play</button>
-				<button id='step_btn'>Step</button>
-				<button id='reset_btn'>Reset</button>
-			</div>
-			<textarea id='cmd_input' placeholder='Type Commands Here...'></textarea>
-		</div>
-	</div>
-
-	<p id='footer'>RodRego by <a href='http://ase.tufts.edu/cogstud/dennett/'>Daniel Dennett</a><br>Web Application by <a href='https://github.com/ben-tanen'>Ben Tanen</a></p>
+    <p id='footer'>RodRego by <a href='http://ase.tufts.edu/cogstud/dennett/'>Daniel Dennett</a><br>Web Application by <a href='https://github.com/ben-tanen'>Ben Tanen</a></p>
 </body>
 </html>
