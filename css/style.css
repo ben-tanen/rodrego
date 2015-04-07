@@ -209,7 +209,7 @@ table {
 }
 
 button:focus {
-    outline: none;
+    /*outline: none;*/
 }
 
 .cmd_display {

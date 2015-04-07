@@ -397,19 +397,29 @@ function runCommands(cmds,i,step) {
                 runCommands(cmds,i,false);
             }, cmdSpeed);
 
-        // if 
-        } else if (step) {
-            stepCmd = i;
         } else if (reset_on) {
             reset_on = false;
             $("#play_btn").prop("disabled",false);
             $("#reset_btn").prop("disabled",true);
-        }
+
+            // set initial values of boxes
+            for (i=0;i<10;i++){
+                boxVal[i] = i;
+            }
+            updateScreen();
+
+            $('#boxes li #box_num').css('color', 'red');
+            $('.cmd_display').html('');
+
+        } else if (step) {
+            stepCmd = i;
+        } 
         
     } else {
         if (!soundOff) {
             playSuccess();
         }
+
         $("#play_btn").prop("disabled",false);
         $("#reset_btn").prop("disabled",true);
         $('.cmd_output_line').css('color', 'white');
