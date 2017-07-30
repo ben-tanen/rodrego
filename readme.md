@@ -7,7 +7,7 @@ RodRego is a simple register machine simulator illustrating the computational ca
 
 My project is to create a port for the simulator in JavaScript, preserving all the capabilities of the original desktop simulator in a new web application.
 
-The current project can be found [here](http://ben-tanen.github.io/RodRego/).
+The current project can be found [here](http://ben-tanen.github.io/rodrego/).
 
 For more information about the original project, [click here](http://sites.tufts.edu/rodrego/).
 
